@@ -110,6 +110,56 @@
       <p>This section is divided into parts describing programming language, frameworks, libraries, APIs and extras that we have researched for this project. Comparisons have also been made
           where appropriate (where we allowed flexibility of choice). 
       </p>
+      <h5>Single Page App vs Multi Page App</h5>
+      <p>The first task was to pick an appropriate language/framework to produce our system in. We had 2 options, one was to use a standard HTML,CSS,JS system and the other was to
+        design a single page application using React. There was a few things to consider in terms of non functional requirements which we would need to take into account.
+        Below is a comparison of React and traditional multi-page apps:
+      </p>
+      <h5>Advantages of Single Page Apps over Multi Page Apps:</h5>
+      <ul>
+        <li>Since SPAs have resources loaded beforehand, it is significantly faster than MPAs. The only thing that is sent between them is data</li>
+        <li>With particular relation to this project, another advantage is that it makes it significantly easier to develop a mobile application because a lot of the backend
+          code for webapp and native app is common. For example React and React Native. Components can be interchangeably used between them according to how well defined they are.
+          This is important because our aim is to make a responsive app, so this allows us to first create a full blown system in React for desktop then easily integrate this with
+          React Native.
+        </li>
+        <li>Additionally, code to render pages on a server is not needed. Development can easily be started from a file URL</li>
+      </ul>
+      <h6>Disadvantages of Single Page Apps over Multi Page Apps:</h6>
+      <ul>
+        <li>A key disadvantage with SPAs is that they have worse security than their MPA counterparts. Particularly, they are prone to XSS(Cross-Site Scripting) attacks. This means
+          that hackers can inject into the app.(1)
+        </li>
+        <li>Since its a SPA, users cannot go back to a previous state using a back button, instead they will be return back to their previous site.</li>
+        <li>MPAs scale significantly better than SPAs. Since MPAs can have as many pages as required, more products/services can be added easily. </li>
+        <li>Since logic is moved out of the server and to the client side, the client would get access to functions they should not have. Therefore, if we do follow this
+          approach, we will have to ensure that access control to functional level will need to be managed.(1)
+        </li>
+      </ul>
+      <h5>Conclusion of SPA vs MPA</h5>
+      <p>Conclusively, we have decided to go ahead with a single page app. Firstly, single page apps load faster meaning it would be convenient for users. Also, SPAs are supposed to
+        be for lightweight applications, which works perfectly for our use case. Additionally, if we were to logically think about a thread model here, it is unlikely someone would
+        hack into the site with a XSS attack as there is no information stored locally, it would all be in MS Graphs. Due to the additional layer of 2FA, hacking of the register for example
+        is also unlikely to happen.
+      </p>
+      <h5>Which JavaScript framework to use for SPA?</h5>
+      <p>There a few main frameworks/libraries to consider here in terms of what to pick:</p>
+      <ul>
+        <li>
+          
+          React: It is a front-end library that is used for creating user interfaces. It renders its own DOM in the browser meaning its performance is better. Less code needs to be
+          written to do the same amount of work as other frameworks (2). Code is split into components which makes it reusable. Amongst other frameworks, it is the fastest. (3)
+          React can also work with react native which helps in easier development of mobile applications meaning it would be better for further future development of this app.
+        </li>
+        <li>
+          Node: It is a lightweight server side library. This library is much better to read large streams of data. Node is also highly extensible due to the existing package modules.
+        </li>
+      </ul>
+
+      <h5>References</h5>
+      (1) https://rubygarage.org/blog/single-page-app-vs-multi-page-app
+      (2) https://medium.com/@OPTASY.com/react-js-vs-node-js-what-are-the-main-differences-which-one-to-choose-for-your-next-web-app-7b07e344e4fb
+      (3) https://www.esparkinfo.com/angular-vs-node-vs-react.html
     </div>
   <hr>
 
