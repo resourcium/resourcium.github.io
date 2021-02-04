@@ -146,20 +146,51 @@
       <p>There a few main frameworks/libraries to consider here in terms of what to pick:</p>
       <ul>
         <li>
-          
           React: It is a front-end library that is used for creating user interfaces. It renders its own DOM in the browser meaning its performance is better. Less code needs to be
           written to do the same amount of work as other frameworks (2). Code is split into components which makes it reusable. Amongst other frameworks, it is the fastest. (3)
           React can also work with react native which helps in easier development of mobile applications meaning it would be better for further future development of this app.
         </li>
         <li>
           Node: It is a lightweight server side library. This library is much better to read large streams of data. Node is also highly extensible due to the existing package modules.
+          Additionally, Node executes outside the browser.(4) 'It’s a lightweight and efficient JavaScript runtime environment on the server side, powered by the Chrome V8 JavaScript engine, that uses a non-blocking I/O model'.(2)
+        </li>
+        <li>
+          Angular: Components are known as directives. These represent DOM elements that add behaviour once Angular finds them. HTML elements are broken down as component parts and behaves
+          as Javascript code, making it different to both React and Vue.(5)
         </li>
       </ul>
+      <p>Below is a speed comparison chart between the different frameworks(6)</p>
+      <img src='./img/speedchart.png' width="500" height:"300">
+      <p></p>
+      <h5>Conclusion of JS Framework to use:</h5>
+      <p>With regards to the information above, we have decided to go ahead with React. Firstly, it is the fastest according to the chart above in server side rendering. Secondly, it is fairly
+        easy to pickup as well according to many sources meaning it is appopriate to use this since 2/3 members have never done web development and we only have around 11 weeks for this project.
+        The requirements are also biased towards front-end development and a few api calls to MS Graphs to produce the required functionalities of the application meaning React would be suitable here.
+        The most important reason is that we can easily incorporate the backend code and some of the front end logic for making a native application for Android and Apple. In our first prototype we plan
+        on making a responsive web-app and then move that to react native during the 2nd prototype stage. 
+      </p>
+      <h5>Technologies we want to use:</h5>
+      <h5>API(s) we researched:</h5>
+      <p>The main API we have researched is MS Graphs API as this was really what constituted the requirements. We can make appropriate calls to Graphs which contains user information
+        in order to make a personalised experience for them. This exposes a REST API to access data from MS Cloud services. For example, we can use this to develop the engagement section
+        where we can add a part that gets data from a students calendar and display what events they are signed upto or need to attend. Below is a link to the Graphs API:<br>
+        https://docs.microsoft.com/en-us/graph/overview<br><br>
+        Our partner introduced us to the graph explorer which lets us make example API calls to Graphs to see examples of responses we would get. 
+        This is particularly useful to ensure you make the right API call to the right resource. Since this app is supposed to be generic, we can define a generic API call to MS Graphs
+        and the only thing we would need during deployment is an authentication token from Azure Active Directory.
+        Again a link to this is here:
+        <br>
+        https://developer.microsoft.com/en-us/graph/graph-explorer?request=me&version=v1.0<br>
 
+
+      </p>
       <h5>References</h5>
-      (1) https://rubygarage.org/blog/single-page-app-vs-multi-page-app
-      (2) https://medium.com/@OPTASY.com/react-js-vs-node-js-what-are-the-main-differences-which-one-to-choose-for-your-next-web-app-7b07e344e4fb
-      (3) https://www.esparkinfo.com/angular-vs-node-vs-react.html
+      (1) https://rubygarage.org/blog/single-page-app-vs-multi-page-app <br>
+      (2) https://medium.com/@OPTASY.com/react-js-vs-node-js-what-are-the-main-differences-which-one-to-choose-for-your-next-web-app-7b07e344e4fb<br>
+      (3) https://www.esparkinfo.com/angular-vs-node-vs-react.html<br>
+      (4) https://stackoverflow.com/questions/56383144/reactjs-vs-nodejs-why-do-i-need-to-create-both#:~:text=Node%20executes%20outside%20the%20<br>browser,own%20DOM%20in%20the%20browser.&text=NodeJS%20is%20just%20a%20runtime,code%20outside%20of%20the%20browser.<br>
+      (5) https://www.codeinwp.com/blog/angular-vs-vue-vs-react/#:~:text=Vue%20provides%20higher%20customizability%20and,two%20is%20an%20easy%20option.<br>
+      (6) https://hackernoon.com/server-side-rendering-shootout-with-marko-preact-rax-react-and-vue-25e1ae17800f<br>
     </div>
   <hr>
 
