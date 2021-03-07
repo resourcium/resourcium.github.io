@@ -82,8 +82,8 @@
           </li>
           <p></p>
           <li>
-          Secondly, we got to setup a 2FA (two factor authentication system) for the online class register. There an existing articles that help to add this to our
-          web app generically. We need to make sure its using Microsoft systems hence the following is suitable for example: <a href=//docs.microsoft.com/en-us/dotnet/architecture/cloud-native/identity-server">Microsoft identity-server</a>.
+          Secondly, we need to setup a 2FA (two factor authentication system) for the online class register. There an existing number of articles that help to add this to our
+          web app generically. We need to make sure its using Microsoft systems hence the following is suitable for example: <a href=//docs.microsoft.com/en-us/dotnet/architecture/cloud-native/identity-server>Microsoft identity-server</a>.
           </li>
           <p></p>
           <li>
@@ -93,7 +93,7 @@
           </li>
           <p></p>
           <li>
-            In addition, we need to allow students to fill out fortnightly forms for feedback on how lectures are currently going as well as their mental wellbeing (work pressure).
+            In addition, we need to allow students to fill out forms for feedback on how lectures are currently going as well as their mental wellbeing (work pressure).
             This part requires research into existing forms available as well as systems that can securely store the forms data in order to be accessible by staff members, through
             Sharepoint. An appropriate option would be MS Forms.
           </li>
@@ -181,8 +181,23 @@
         Again a link to this is here:
         <br>
         https://developer.microsoft.com/en-us/graph/graph-explorer?request=me&version=v1.0<br>
-
-
+      </p>
+      <p>
+        Another important API was the Microsoft Learn API. This was a simple catalog which contains the details, in a JSON format, of all the modules and learning pathways that Microsoft provided.
+        This was useful as our application would make a API call to retrieve this data and present it to the user in the case where they require assistance in a particular topic. In order to complete
+        the module, students must head over to the actual website which our app would link to. Details regarding the MS Learn API is detailed below:
+        <a href='https://docs.microsoft.com/en-us/learn/support/catalog-api'>Link to MS Learn Catalog</a>
+        <br>
+        The response body of calling this API would look as follows:
+        <br>
+        {<br>
+          "modules": [ ... ],<br>
+          "learningPaths": [ ... ],<br>
+          "products": [ ... ],<br>
+          "roles": [ ... ],<br>
+          "levels": [ ... ]<br>
+      }<br>
+      We are particulary interested in just modules and learning paths so the appropriate courses according to the user input can be extracted from there.
       </p>
       <h5>References</h5>
       (1) https://rubygarage.org/blog/single-page-app-vs-multi-page-app <br>
