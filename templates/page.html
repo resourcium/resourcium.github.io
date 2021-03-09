@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+{% block heading %}{{ page.title }}{% endblock heading %}
+{% block description %}UCL Resourcium | {{ page.title }}{% endblock description %}
+
+<!-- Custom styles for this template -->
+
+
+{% block content %}{{ page.content | safe }}{% endblock content %}
