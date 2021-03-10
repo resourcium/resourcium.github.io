@@ -3,7 +3,6 @@ function setVisible(screen) {
 }
 
 function showError(error) {
-  //todo
   console.error(error);
   document.querySelector(".error").textContent = error;
 }

@@ -113,7 +113,7 @@ Note: you will also need to update the permissions on the app registration for a
 
 ## Example app
 
-Attached [here](./example_app.zip) is an example app that demonstrates using SSO login on a single page app without any frameworks (pure JavaScript).
+Attached [here](./example_site.zip) is an example app that demonstrates using SSO login on a single page app without any frameworks (pure JavaScript).
 
 To run you need to download the source code and host it locally such as by using `python3 -m http.server 3000`. You then need to create the app registration which will give you access to a tenant id and an app id. You should then edit the `script.js` file to update the `clientId` and `authority` (see the `msalConfig` variable). You need to set the single page app redirect URL to be `localhost:3000` or your local URL.
 
