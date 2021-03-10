@@ -11,7 +11,8 @@ but it lacks suitable measures for student feedback and engagement.
 ## Project Goals
 Our project goal is to increase student engagement with staff members and allow staff at UCL to easily monitor how their students
 are doing in relation to their courses. In technical terms, our project is oriented around developing a responsive web
-application that serves both students and staff members.
+application that serves students and stores data about what they need in terms of resources for staff to see. The application should also
+provide appropriate help to students in terms of resources. 
 
 ### Client Requirements
 An online meeting was arranged via Microsoft Teams with our clients.
@@ -67,11 +68,9 @@ point for our application)).
 
 - There must be a login page for students to use their existing university details to login by
 - Data must not be stored about students on anywhere but the organisations' Sharepoint system
-- The website must be responsive
 - There must be a 2 factor authentication system to validate students when they register for classes which we must design ourself
-- Students can report their stress levels and workloads as well as pain points.
+- Students can report their stress levels and workloads as well as pain points anonymously within their course.
 - This data must be stored in a centralised Sharepoint site
-- It must be deployable by other universities
 
 ### Should Haves:
 
@@ -81,6 +80,7 @@ point for our application)).
 - The app should be customisable by students (for example changing color schemes) where settings will be stored in a database
 
 ### Could Haves:
+- The system could feature a ticketing system where staff members and course representatives respond to the additional help required by the student in their course
 - The system could have a page dedicated to helping students further their careers via a shared calendar that they can access to see upcoming events
 - The system could feature things that are currently happening at the university, via blogs, social medias etc. (this will require scripting and web scraping)
 - The system could allow additional features to be added, essentially a architecture that is extensible.
@@ -89,6 +89,13 @@ point for our application)).
 - The system would like to have a chat bot that can assist students in help they need (Stretch goal)
 
 ### Things we won't have:
-- The backend for the registration of students as this would require a strong coupling between the app and a particular function/API provided by the university.In this case, universities will have to design their own backend for registration to a lecture and connect it to our front end two factor authentication.
+- The backend for the registration of students as this would require a strong coupling between the app and a particular function/API provided by the university. In this case, universities will have to design their own backend for registration to a lecture and connect it to our front end two factor authentication.
+
+
+### Non-functional requirements:
+- The source code should be open source and freely available
+- The application must be responsive
+- The application must be deployable by other universities
+- The application should have a reasonable response time when users search for resources
 
 Note: Requirements may change over the course of the year according to the clients' demand.
