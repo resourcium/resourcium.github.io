@@ -14,5 +14,4 @@ jobs:
         env:
           PAGES_BRANCH: gh-pages
           BUILD_DIR: .
-          BUILD_FLAGS: -u /WebsiteTeam29
           TOKEN: ${{ secrets.TOKEN }}
