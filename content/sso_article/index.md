@@ -4,15 +4,15 @@ title = "Implementing SSO with Microsoft Accounts (for Single Page Apps)"
 
 **Project:** UCL Resourcium
 
-**Team members:** Louis de Wardt, Hemil Shah, Pritika Shah
+**Team members:** Louis de Wardt ({{ external_link(url="https://github.com/louisdewar/") }}), Hemil Shah ({{ external_link(url="https://www.linkedin.com/in/hemil-shah-58747b161/") }}), Pritika Shah
 
-With the complexities that come with setting up your own database to make a login system, the best alternative would be to use Microsoft live login instead. This works by “handing” over responsibilities of login management to Microsoft as well as security technicalities. Having to design your own database with login and passwords also slows the development process, giving you less time as developers to focus on things that you need. Our project aimed to allow an easy way for students to access our application and get assistance. The simplest answer was for students to use their existing login (also known as SSO ‘Single Sign On’) to access apps. This does not only simplify things for the developer, but also the user themselves since it reduces the need for them to remember another set of username and password. The article will explain in detail on how you can setup your application to use live login directly with Microsoft.
+With the complexities that come with setting up your own database to make a login system, the best alternative would be to use Microsoft live login instead. This works by “handing” over responsibilities of login management to Microsoft as well as security technicalities. Having to design your own database with login and passwords also slows the development process, giving you less time as developers to focus on things that you need. Our project aimed to allow an easy way for students to access our application and get assistance. The simplest answer was for students to use their existing login (also known as SSO ‘Single Sign On’) to access apps. This does not only simplify things for the developer, but also the user themselves since it reduces the need for them to remember another set of usernames and passwords. This article will explain in detail on how you can setup your application to use live login directly with Microsoft.
 
-This is designed to work for single page apps, if your app involves a web server serving each web page then you will need to use a slightly different login flow (specifically the `Web` flow rather than the `Single-page application`)
+This is designed to work for single page apps, if your app involves a web server serving each page separately then you will need to use a slightly different login flow (specifically the `Web` flow rather than the `Single-page application`)
 
 ## Setting everything up
 
-1. You need an app registration on Azure Active Directory. Go to Active Directory -> App Registrations -> New Registration. I entered `SSO Example App`  for the app name but you can choose your own app name. You need to decide for yourself whether your app should be single or multi-tenant. We can skip the redirect URL for now but we'll need to come back to that.
+1. You need an app registration on Azure Active Directory. Go to Active Directory -> App Registrations -> New Registration. We chose `SSO Example App`  for the app name but you can choose your own app name. You need to decide for yourself whether your app should be single or multi-tenant. We can skip the redirect URL for now but we'll need to come back to that.
 
 These screenshots describe this process visually:
 
@@ -36,7 +36,7 @@ Here you should choose `Single-page application`:
 
 ![](./choose_single_page_app.png)
 
-Enter in the redirect URL (`http://localhost:3000` in my case )
+Enter in the redirect URL (such as `http://localhost:3000`)
 
 ![](./platform_form.png)
 
@@ -58,7 +58,7 @@ Enter in the redirect URL (`http://localhost:3000` in my case )
         "https://login.microsoftonline.com/{{TENANT_ID}}",
     },
   };
-   ```
+  ```
 3. Now we can create a function to start the login process:
 
   ```js
@@ -83,7 +83,7 @@ Enter in the redirect URL (`http://localhost:3000` in my case )
   }
   ```
 
-Here I chose the popup method of authentication, you can also chose redirect.
+Here we chose the popup method of authentication, you can also chose redirect.
 
 The functions called `showError` and `showResult` are examples and they will likely be different in your application.
 
