@@ -6,7 +6,7 @@ title = "Research"
 
 Currently, we are producing the first ever generation of this web application. However, if we segment the parts of the web application,
 then there are many existing solutions to build parts of our application with as opposed to the entire system. Below is an outline of what we looked into,
-further analysis of this is available further down:
+further analysis of this is available further down.
 
 ### Login
 
@@ -20,8 +20,8 @@ Even though this article is for Python Django and PHP it is useful to understand
 
 ### Storing data in Sharepoint
 
-Then the question comes to how do we store data within Sharepoint, which is in fact a completely different framework to everything. This is the only documentation we needed: [Sharepoint Link](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/office-365-development-patterns-and-practices-solution-guidance) It contained all the necessary information to setup a Sharepoint site as well as get it to store data. So the key features in this are that a Sharepoint site would need to be firstly created, then a Sharepoint list needs to be created  ,which is essentially what stores the data, and finally to create the dashboard view these objects would need to be displayed to the site page. This was not enough however, as to get data to Sharepoint
-we needed to gain access to the site itself. We had 2 options for Sharepoint, one was to allow our app access to all of Sharepoint (Microsoft does not allow the app access to only one site) and the other was a Microsoft Flow that automates data from a Microsoft Form to Sharepoint. Microsoft Flow is a process and task automation tool that helps connect different applications and services together. Many of these applications that can be used with Flow are cloud-based, although it is also possible to use Flow in an on-premises environment.(1) What we can learn using this existing system, is that it is quite easy to automate data to Sharepoint so when we go on to build our app, which will include students filling out forms, it will be appropriate for it to be a Microsoft Form and then the forms data gets sent to a Sharepoint list via the Flow.
+Then the question comes to how do we store data within Sharepoint, which is in fact a completely different framework to everything. This is the only documentation we needed: [Sharepoint Link](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/office-365-development-patterns-and-practices-solution-guidance) It contained all the necessary information to setup a Sharepoint site as well as get it to store data. So the key features in this are that a Sharepoint site would need to be firstly created, then a Sharepoint list needs to be created, which is essentially what stores the data, and finally to create the dashboard view these objects would need to be displayed to the site page. This was not enough however, as to get data to Sharepoint
+we needed to gain access to the site itself. We had 2 options for Sharepoint, one was to allow our app access to all of Sharepoint (Microsoft does not allow the app access to only one site) and the other was a Microsoft Flow that automates data from a Microsoft Form to Sharepoint. Microsoft Flow is a process and task automation tool that helps connect different applications and services together. Many of these applications that can be used with Flow are cloud-based, although it is also possible to use Flow in an on-premises environment[^what_is_ms_flow]. What we can learn using this existing system, is that it is quite easy to automate data to Sharepoint so when we go on to build our app, which will include students filling out forms, it will be appropriate for it to be a Microsoft Form and then the forms data gets sent to a Sharepoint list via the Flow.
 
 
 ## Single Sign On
@@ -32,49 +32,65 @@ Our team wrote an article about implementing single sign on (SSO) and it can be 
 
 This web app should support all device types, it's made for students hence compatibility between all devices is necessary.
 
-### Detailed Research
+## Detailed Research
 
-This section is divided into parts describing programming language, frameworks, libraries, APIs and extras that we have researched for this project. Comparisons have also been made
-where appropriate (where we allowed flexibility of choice).
+This section is divided into parts describing programming language, frameworks, libraries, APIs and extras that we have researched for this project. Comparisons have also been made where appropriate (where we allowed flexibility of choice).
 
 ### Single Page App vs Multi Page App
-The first task was to pick an appropriate language/framework to produce our system in. We had 2 options, one was to use a standard HTML,CSS,JS system and the other was to
-design a single page application using React. There was a few things to consider in terms of non functional requirements which we would need to take into account.
+
+The first task was to pick an appropriate language/framework to produce our system in. We had 2 options, one was to use a standard HTML,CSS,JS system and the other was to design a single page application using React. There was a few things to consider in terms of non functional requirements which we would need to take into account.
+
 Below is a comparison of React and traditional multi-page apps:
 
-### Advantages of Single Page Apps over Multi Page Apps:
+#### Advantages of Single Page Apps over Multi Page Apps:
 
-- Since SPAs have resources loaded beforehand, it is significantly faster than MPAs. The only thing that is sent between them is data
+- Since SPAs render themselves, the user only needs to download the code once and then from then on the app can be populated with small specific API calls whereas MPAs must render new full HTML pages each time meaning there is more redundant data being sent.
 - With particular relation to this project, another advantage is that it makes it significantly easier to develop a mobile application because a lot of the backend code for webapp and native app is common. For example React and React Native. Components can be interchangeably used between them according to how well defined they are.
-This is important because our aim is to make a responsive app, so this allows us to first create a full blown system in React for desktop then easily integrate this with
-React Native.
-- Additionally, code to render pages on a server is not needed. Development can easily be started from a file URL
+This is important because our aim is to make a responsive app, so this allows us to first create a full blown system in React for desktop then easily integrate this with React Native.
+- Additionally, code to render pages on a server is not needed. Deployment is incredible simple as it's just about hosting some static files.
 
-### Disadvantages of Single Page Apps over Multi Page Apps:
+#### Disadvantages of Single Page Apps over Multi Page Apps:
+
 - A key disadvantage with SPAs is that they require JavaScript which is not always enabled on the client's browser. Additionally the use of JavaScript opens up the possibility of a cross site scripting (XXS) attack in case we rely on a dependency which an attacker has gained control over.
 - MPAs scale significantly better than SPAs. Since MPAs can have as many pages as required, more products/services can be added easily.
-- Since logic is moved out of the server and to the client side, the client would get access to functions they should not have. Therefore, if we do follow this
-  approach, we will have to ensure that access control to functional level will need to be managed.(2)
+- Since logic is moved out of the server and to the client side, the client would get access to functions they should not have. Therefore, if we do follow this approach, we will have to be careful about ensuring proper access control to prevent leaking of data[^spa_vs_mpa].
 
-### Conclusion of SPA vs MPA
+#### Conclusion of SPA vs MPA
+
 Conclusively, we have decided to go ahead with a single page app. Firstly, single page apps load faster meaning it would be convenient for users. Switching to a MPA does not mitigate XSS concerns since it is still common to use JavaScript with external dependencies there, it's just that SPA necessitate JavaScript. Furthermore as long as we are careful to limit our dependencies to a few trustworthy packages we shouldn't have too many issues. 
 
 Which JavaScript framework to use for SPA?
 There a few main frameworks/libraries to consider here in terms of what to pick:
-- React: It is a front-end library that is used for creating user interfaces. It renders its own DOM in the browser meaning its performance is better. Less code needs to be written to do the same amount of work as other frameworks (3). Code is split into components which makes it reusable. It is also relatively stable, having gained adoption with many major companies all with a vested interest in keeping react working[^companies_using_react].
+
+- React: It is a front-end library that is used for creating user interfaces. It renders its own DOM in the browser meaning its performance is better. Less code needs to be written to do the same amount of work as other frameworks[^react_vs_node_1]. Code is split into components which makes it reusable. It is also relatively stable, having gained adoption with many major companies all with a vested interest in keeping react working[^companies_using_react].
+
 - React can also work with react native which helps in easier development of mobile applications meaning it would be better for further future development of this app.
-  Node: It is a lightweight server side library. This library is much better to read large streams of data. Node is also highly extensible due to the existing package modules.
-- Additionally, Node executes outside the browser.[^react_vs_node_2] 'It’s a lightweight and efficient JavaScript runtime environment on the server side, powered by the Chrome V8 JavaScript engine, that uses a non-blocking I/O model'.(2)
-  Angular: Components are known as directives. These represent DOM elements that add behaviour once Angular finds them. HTML elements are broken down as component parts and behaves
-  as Javascript code, making it different to both React and Vue.(6)
+  
+- Node: It is a lightweight server side library. This library is much better to read large streams of data. Node is also highly extensible due to the existing package modules.
 
-### Conclusion of JS Framework to use:
+  Additionally, Node executes outside the browser.[^react_vs_node_2] 'It’s a lightweight and efficient JavaScript runtime environment on the server side, powered by the Chrome V8 JavaScript engine, that uses a non-blocking I/O model' [^spa_vs_mpa].
 
-With regards to the information above, we have decided to go ahead with React. Firstly, it is the fastest according to the chart above in server side rendering. Secondly, it is fairly
-easy to pickup as well according to many sources meaning it is appropriate to use this since 2/3 members have never done web development and we only have around 11 weeks for this project.
+- Angular: Components are known as directives. These represent DOM elements that add behaviour once Angular finds them. HTML elements are broken down as component parts and behaves as JavaScript code, making it different to both React and Vue[^angular_vs_vue_vs_react].
+
+#### Conclusion of JS Framework to use:
+
+With regards to the information above, we have decided to go ahead with React. Firstly, it is the fastest according to the chart above in server side rendering. Secondly, it is fairly easy to pickup as well according to many sources meaning it is appropriate to use this since 2/3 members have never done web development and we only have around 11 weeks for this project.
 The requirements are also biased towards front-end development and a few api calls to MS Graphs to produce the required functionalities of the application meaning React would be suitable here.
-The most important reason is that we can easily incorporate the backend code and some of the front end logic for making a native application for Android and Apple. In our first prototype we plan
-on making a responsive web-app and then move that to react native during the 2nd prototype stage. 
+The most important reason is that we can easily incorporate the backend code and some of the front end logic for making a native application for Android and Apple. In our first prototype we plan on making a responsive web-app and then move that to react native during the 2nd prototype stage.
+
+### Deployment
+
+Our client believes our app has potential beyond UCL and he also wants the app to be easily redeploy-able by people without much technical expertise. This presents a somewhat difficult challenge since we are Azure native (our application is running entirely through Azure cloud services) we need to deploy many resources in an automated manner. We also need a configuration file that administrators can edit which will then be reflected in the deployed version of the app.
+
+We spent a significant amount of time researching into Terraform but during development we usually manually ran the commands for the final stages and we eventually converted that manual process into the python script.
+
+### Terraform
+
+Terraform is a program that lets you declare the exact state of the deployed cloud resources and it can then query the Azure API to deploy them. If we ever change the configuration Terraform can handle the incremental updates without destroying and redeploying the resources. There are two providers for Terraform that are designed for deploying Azure resources [azurerm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs) and [azuread](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs).
+
+### Python Script
+
+Although Terraform is great it can't deploy the actual code, only the "slots" where the code can go. Further more we need to customise variables within both the client and server side code some of which can **only** be known after deployment. This is why we have to deploy Terraform and then upload the server and client code.
 
 ## Technologies we want to use:
 
