@@ -70,26 +70,28 @@ point for our application)).
 - Data must not be stored about students on anywhere but the organisations' Sharepoint system
 - There must be a 2 factor authentication system to validate students when they register for classes which we must design ourself
 - Students can report their stress levels and workloads as well as pain points anonymously within their course.
-- This data must be stored in a centralised Sharepoint site
+- There must be a simple admin dashboard to view the data that is collected which will be a Sharepoint dashboard (we will facilitate the dashboard but
+ universities will be responsible for its creation and maintenance on the Sharepoint site)
+- The app must be generic enough to work for other universities (any specific scopes/data requirements will need to be defined)
 
 ### Should Haves:
 
 - There should be a way to allow students to access extra resources for their course or whatever they may be interested in
-- There should be a simple admin dashboard to view the data that is collected which will be a Sharepoint dashboard (we will facilitate the dashboard but
-- universities will be responsible for its creation and maintenance on the Sharepoint site)
 - The app should be customisable by students (for example changing color schemes) where settings will be stored in a database
+- The system should feature a ticketing system where staff members and course representatives respond to the additional help required by the student in their course
 
 ### Could Haves:
-- The system could feature a ticketing system where staff members and course representatives respond to the additional help required by the student in their course
 - The system could have a page dedicated to helping students further their careers via a shared calendar that they can access to see upcoming events
 - The system could feature things that are currently happening at the university, via blogs, social medias etc. (this will require scripting and web scraping)
 - The system could allow additional features to be added, essentially a architecture that is extensible.
+- The system would like to have a QnA bot that can assist students in help they need.
+- If a QnA bot is implemented then the bot must be easily extendable (staff should be able to update the QnA database via a Sharepoint list)
 
 ### Would Haves:
-- The system would like to have a chat bot that can assist students in help they need (Stretch goal)
+- None
 
 ### Things we won't have:
-- The backend for the registration of students as this would require a strong coupling between the app and a particular function/API provided by the university. In this case, universities will have to design their own backend for registration to a lecture and connect it to our front end two factor authentication.
+- The backend for the registration of students as this would require a strong coupling between the app and a particular function/API provided by the university. In this case, universities will have to design their own backend for registration to a lecture and connect it to our front end two factor authentication where we can specify the point of connection.
 
 
 ### Non-functional requirements:

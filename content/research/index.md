@@ -37,7 +37,7 @@ This web app should support all device types, it's made for students hence compa
 This section is divided into parts describing programming language, frameworks, libraries, APIs and extras that we have researched for this project. Comparisons have also been made
 where appropriate (where we allowed flexibility of choice).
 
-Single Page App vs Multi Page App
+### Single Page App vs Multi Page App
 The first task was to pick an appropriate language/framework to produce our system in. We had 2 options, one was to use a standard HTML,CSS,JS system and the other was to
 design a single page application using React. There was a few things to consider in terms of non functional requirements which we would need to take into account.
 Below is a comparison of React and traditional multi-page apps:
