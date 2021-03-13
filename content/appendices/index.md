@@ -85,6 +85,13 @@ of the ticketing system, our system only stores their email address and the help
 To conclude, our application does not have a data privacy concern as our application does not store data interally. It is all passed onto the university servers (Azure and Sharepoint) to be processed. As long as the university follow the GDPR laws too, there should not be a problem.
 
 
+#### Manufacture process and deployment costing
+
+Since our system is based off the cloud and many Azure services as well as other subscriptions. Universities will need be a tenant with Microsoft, they will need access to Microsoft 365 including MS Forms, MS Flows Premium, MS Sharepoint. Subscriptions for LinkedinLearning and Microsoft Learn will also be required for it to be usable by the application.
+Below is the cost list for each individual part of the app:
+
+# to complete
+
 ### Compliance of ADA and WCAG 2.2
 
 The software also follows the key points of the high compliance systems interfaces:
