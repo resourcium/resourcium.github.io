@@ -9,6 +9,8 @@ This page explains the summary of achievements, critical evaluation of the proje
 ### Summary of achievements
 ---
 #### Achievement Table for MoSCoW list
+![MoSCoW List](./m.png)
+![MoSCoW List2](./m2.png)
 
 #### List of known bugs
 
@@ -16,6 +18,8 @@ There is currently no known bugs, which we have identified during testing of the
 during testing or implementation stages. This helped to keep the bug list empty.
 
 #### Individual contribution table
+NEED TO DO
+
 
 ### Critical evaluation of project
 ---
@@ -41,9 +45,34 @@ Overall, we give ourselves "good" for the stability section.
 \
 \
 \
-- Efficiency: 
-
-
+- Efficiency: Throughout the entire project we aimed to maximise performance. To do this, we used React as its been made to minimize costly DOM operations that in turn update the UI. In this case, not much extra work was needed to maximise the performance of the UI. However, even though the application loads up quickly and performs the basic operations well, in some cases it is slow. For example, when using the Linkedin Learning API to search for results, users have to wait for upto 8 seconds to receive UI feedback. We recognise that it is not the fault of our application as it is in fact the API that sends the results slowly. Overall, we have kept in mind that ultimately students will not have time to wait too much and ensured that majority of the UI loads in quickly.
+\
+\
+Overall, in this section we give ourselves "good".
+\
+\
+\
+- Compatibility: Ever since the project started we made sure to keep the devices and system the end-user would have. In this case, devices and systems would range from different browsers (chrome,firefox etc.) to different device types (tablets, mobile phones and laptops). We have conducted appropriate responsive testing and compatibility testing with different browsers and are proud to say that it works successfully on all browsers and screen sizes. However, user acceptance suggested that even though the UI for the laptop version was neat, it strayed from a "standard" design for larger screens which normally involved having a navigation bar at the top.
+\
+\
+In this area, we give ourselves "good" in terms of responsive design.
+\
+\
+\
+- Maintainability: The code base is well documented via integration/unit tests ("tests as documentation") allowing developers to easily follow the codebase and extend upon it as necessary. Due to our component based design, the architecture can easily be changed without the code breaking. We have created essentially a component-based functionality but it is not fully extensible as it would require whats called "shotgun surgery". This means in order to add one component many different classes would need to be changed to facilitate that. Due to our lack of time we were unable to make this as a base architecture, and hence have written about this in future works.
+\
+\
+As the code is well-documented via appropriate tests, we can give ourselves "very good" here.
+\
+\
+\
+- Project Management: This was difficult to do as one of our team members was an international student so communication and synchronisation was difficult. However, we made sure to set up meetings 24 hours prior to meeting them. Additionally, in the 2nd term we took a sprint based approach to the project where we would have regular stand-ups during the week at 10:30am. Github issue tracker was consistently used with the sprint boards to assign tasks to each member (as well as self assign). We could have potentially used Notion for the project instead which is deemed by many to be better and easier to use.
+\
+\
+In this area, we give ourselves "good" because even though we completed the project with changing requirements, one of the members failed to communicate well-enough.
+\
+\
+\
 ### Future Work
 ---
 
