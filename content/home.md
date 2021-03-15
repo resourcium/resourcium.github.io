@@ -28,18 +28,27 @@ Our achievement would be students being able to receive the help and support the
 
 ### The development team
 
-- ![Hemil Shah](/images/hemilspic.jpeg)
-\
-Hemil Shah
-\
-hemil.shah.19@ucl.ac.uk
-\
-Front-end developer, Website Editor, Researcher
-\
-Not a great web developer but helped make the front-end
-\
-https://www.linkedin.com/in/hemil-shah-58747b161/
+The development team is composed of three people: Hemil Shah, Pritika Shah and Louis de Wardt.
 
+#### Hemil Shah
+
+![Hemil Shah](/images/hemilspic.jpeg)
+
+- hemil.shah.19@ucl.ac.uk
+- Front-end developer, Website Editor, Researcher
+- Not a great web developer but helped make the front-end
+- {{ external_link(url="https://www.linkedin.com/in/hemil-shah-58747b161/") }}
+
+#### Louis de Wardt
+
+<br />
+<img alt="Louis de Wardt" src="/images/louis_image.jpg" style="max-width: 200px"/>
+
+- contact@louis.dewardt.uk\
+- Front & back end developer, Researcher
+- {{ external_link(url="https://github.com/louisdewar/") }}
+
+<br />
 
 ### Project Management
 
