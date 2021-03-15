@@ -4,7 +4,7 @@ title = "Implementing SSO with Microsoft Accounts (for Single Page Apps)"
 
 **Project:** UCL Resourcium
 
-**Team members:** Louis de Wardt ({{ external_link(url="https://github.com/louisdewar/") }}), Hemil Shah ({{ external_link(url="https://www.linkedin.com/in/hemil-shah-58747b161/") }}), Pritika Shah
+**Team members:** Louis de Wardt ({{ external_link(url="https://github.com/louisdewar/") }}), Hemil Shah ({{ external_link(url="https://www.linkedin.com/in/hemil-shah-58747b161/") }}), Pritika Shah ({{ external_link(url="https://github.com/pritsspritss/") }})
 
 With the complexities that come with setting up your own database to make a login system, the best alternative would be to use Microsoft live login instead. This works by “handing” over responsibilities of login management to Microsoft as well as security technicalities. Having to design your own database with login and passwords also slows the development process, giving you less time as developers to focus on things that you need. Our project aimed to allow an easy way for students to access our application and get assistance. The simplest answer was for students to use their existing login (also known as SSO ‘Single Sign On’) to access apps. This does not only simplify things for the developer, but also the user themselves since it reduces the need for them to remember another set of usernames and passwords. This article will explain in detail on how you can setup your application to use live login directly with Microsoft.
 

@@ -88,6 +88,8 @@ We spent a significant amount of time researching into Terraform but during deve
 
 Terraform is a program that lets you declare the exact state of the deployed cloud resources and it can then query the Azure API to deploy them. If we ever change the configuration Terraform can handle the incremental updates without destroying and redeploying the resources. There are two providers for Terraform that are designed for deploying Azure resources [azurerm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs) and [azuread](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs).
 
+TODO: Mention ARM templates
+
 ### Python Script
 
 Although Terraform is great it can't deploy the actual code, only the "slots" where the code can go. Further more we need to customise variables within both the client and server side code some of which can **only** be known after deployment. This is why we have to deploy Terraform and then upload the server and client code.
