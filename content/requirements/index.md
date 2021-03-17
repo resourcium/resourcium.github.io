@@ -70,15 +70,15 @@ point for our application)).
 - Data must not be stored about students on anywhere but the organisations' Sharepoint system
 - There must be a 2 factor authentication system to validate students when they register for classes which we must design ourself
 - Students can report their stress levels and workloads as well as pain points anonymously within their course.
-- There must be a simple admin dashboard to view the data that is collected which will be a Sharepoint dashboard (we will facilitate the dashboard but
- universities will be responsible for its creation and maintenance on the Sharepoint site)
+- An admin dashboard on Sharepoint to view this data.
 - The app must be generic enough to work for other universities (any specific scopes/data requirements will need to be defined)
 
 ### Should Haves:
 
 - There should be a way to allow students to access extra resources for their course or whatever they may be interested in
 - The app should be customisable by students (for example changing color schemes) where settings will be stored in a database
-- The system should feature a ticketing system where staff members and course representatives respond to the additional help required by the student in their course
+- The system should feature a ticketing system where staff members and course representatives respond to the additional help required by the student in their course and an 
+automated email should be sent to the student regarding their query as acknowledgement
 
 ### Could Haves:
 - The system could have a page dedicated to helping students further their careers via a shared calendar that they can access to see upcoming events
@@ -95,9 +95,9 @@ point for our application)).
 
 
 ### Non-functional requirements:
-- The source code should be open source and freely available
-- The application must be responsive
-- The application must be deployable by other universities
-- The application should have a reasonable response time when users search for resources
+- The application must be responsive (Must)
+- The application must be deployable by other universities (Must)
+- The source code should be open source and freely available (Should)
+- The application should have a reasonable response time when users search for resources (Should)
 
 Note: Requirements may change over the course of the year according to the clients' demand.
