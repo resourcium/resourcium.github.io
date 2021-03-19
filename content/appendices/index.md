@@ -8,8 +8,7 @@ This page contains the user manual, deployment manual and legal issues and proce
 
 ### User Manual
 ---
-
-FILLER
+https://drive.google.com/file/d/16ZBPm8gkbL-S01gn4Bn1uSyCVCcG4S6I/view?usp=sharing
 
 ### Deployment Manual
 ---
