@@ -32,7 +32,7 @@ The development team is composed of three people: Hemil Shah, Pritika Shah and L
 
 #### Hemil Shah
 
-![Hemil Shah](/images/hemilspic.jpeg)
+<img alt="Hemil Shah" src="{{ get_url(path="/images/hemilspic.jpeg") }}" />
 
 - hemil.shah.19@ucl.ac.uk
 - Front-end developer, Website Editor, Researcher
@@ -42,7 +42,7 @@ The development team is composed of three people: Hemil Shah, Pritika Shah and L
 #### Louis de Wardt
 
 <br />
-<img alt="Louis de Wardt" src="/images/louis_image.jpg" style="max-width: 200px"/>
+<img alt="Louis de Wardt" src="{{ get_url(path="/images/louis_image.jpg") }}" style="max-width: 200px"/>
 
 - contact@louis.dewardt.uk\
 - Front & back end developer, Researcher

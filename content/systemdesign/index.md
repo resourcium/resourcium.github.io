@@ -25,6 +25,9 @@ This diagram shows our overall architecture omitting some minor details:
 
 ![Architecture Diagram](./architecture_diagram.png)
 
+Our database is technically schemaless but we follow the pattern below:
+
+![Entity Relationship Diagram](./er_diagram.png)
 
 
 ## Sitemap Diagram
