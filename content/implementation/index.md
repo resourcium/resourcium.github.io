@@ -65,3 +65,87 @@ On our information page we directly integrate with several APIs including Micros
 The Microsoft Learn and Linkedin Learning tabs both have similar flows which is to allow the user to search for something they need help with and then find direct links to the particular service to allow the user to participate in the course. With Microsoft Learn there is no search API so we have to download the entire catalogue of courses and then search through it locally. We cache the download to avoid extensive network usage. Linkedin Learning provides a search API but for security reasons we don't give access to the tokens that can be used to directly query the API to the client. Instead we provide an Azure function endpoint that acts as a proxy between Linkedin Learning and our app. This proxy also implements automatically refreshing the token whenever it expires.
 
 When our app is deployed the user provides a QnA Bot token which allows us to interact with that API to provide the user with a chat application where they can ask common questions to the bot.
+
+### SharePoint site
+
+The SharePoint site creation was a no-code solution. It requires you to select what lists and reports to display on the SharePoint site as shown below:
+![Sharepoint site](./sharepointsite.png)
+\
+\
+Again, the creation of the Sharepoint lists was also a no-code solution. You provide it with the columns you need and it will automatically generate these lists. Below is how the lists can be created:
+![Sharepoint list](./sharepointlist.png)
+
+### Creation of the QnA Bot
+
+The bot was created by following the steps below:
+
+1. Created a QnAMaker resource within Azure
+2. Used that resource to generate a QnA knowledgebase on the site (www.qnamaker.ai)
+3. Then once that is setup, use the Web Bot tool in Azure to create the QnA bot itself connected to the knowledgebase as shown by the image below:
+\
+![QnA Bot Setup](./qnabot.png)
+4. The token would need to be obtained from the Bot resource to connect it to the front end (the web application we made).
+
+More details of the above can be found in the deployment manual for SharePoint where a video guide is availabe on exactly how to make your own one.
+
+### How the flows work and were created
+To generalise the implementation of all the flows/automated system, we made use of Microsoft Flows. To find reasoning on to why we used this, please check the research section of the website.
+
+#### Implementation of the flow that automates student additional help data to SharePoint lists
+![Flow 1](./flow1.png)
+\
+Above is the flow that allows the student help form data to be automated to the Sharepoint site. It looks very simple on the surface but there's a lot going on under the hood. Below I have provided a screenshot of the expanded condition part of the flow:
+![Flow 1](./flow1_1.png)
+Even though this uses no code, it can be read like code. So firstly, we check here which term the form is for. This data again comes from the form which the student fills out. Depending on the input of the term, it will automatically send it to the appropriate term list as you can notice under the conditional. If it is in term 1, it will default to the yes side of the branch and store the data in the Term 1 Responses list within SharePoint. If it is Term 2 or Term 3, which would go under the no condition in the first conditional statement, then it would store the data in those appropriate lists. Within create item, you can specify exactly what form data is stored under which column in the list.
+
+![Flow 1](./flow1_2.png)
+\
+This is the email part expanded. Over here, we get the student email details via the MS Form and we can specify the format of the automated email that is sent to the student in order to tell them that their request has been acknowledged.
+
+#### Implementation of the flow that automates data from student stress level form to Sharepoint list
+![Flow 2](./flow2.png)
+\
+The above flow is what allows the student stress level forms data to be automated to the Sharepoint list. Generally, MS Flows always start off with a trigger, in the current case it would be a stress level form being submitted. After this, we get the data of the form thats been submitted and fill out the column values in Sharepoint list using this data. One key thing to note here is that since the Stress Level column is an integer, you have to convert (typecast) the incoming Stress Level data from the form to an integer in order to store it in the Sharepoint list.
+
+#### Implementation of the flow that automates data from the student stress level form to PowerBi to setup reporting
+![Flow 3](./flow3.png)
+\
+The above flow is connected to a PowerBi streaming dataset, that has the fields of Course Code, Stress Level, Course Blockers and Timestamp. Then, we get the stress level data stored within the Sharepoint list and direct it towards PowerBi. The advantage of using this approach is that when we do setup a reporting system for this stress level data, it will not need to be refreshed.
+
+#### Implementation of the flow that allows pairings to be added and modified in the QnA knowledgebase
+![Flow 4](./flow4.png)
+\
+The above flow consists of many parts. So at the start we initialise some variables. The subscription key, kbID and endpoint variables are all related to the azure resource. These details are necessary to perform the API call that will update the knowledgebase. Below I have expanded the conditional part of the flow:
+![Flow 4_1](./flow4_1.png)
+Firstly, in the yes branch we have a updateItem HTTP call, what this means is that we are calling the endpoint for the knowledgebase in order to perform an update. The conditional checks whether its a new item or modified item in the Sharepoint List. If it is a modified value, we would default to the yes of this branch. Below I have further expanded the updateItem HTTP call:
+\
+![Flow 4_2](./flow4_2.png)
+\
+Clearly, in this HTTP call, we need to perform a PATCH request to the API, with the body show in the image. The body specifies essentially which QnA pair to update (this uses the qnaId stored in the Sharepoint list) and the question/answer updates. Since we have called the API to perform an update, it returns a operationID in the body of the response. We use this response to perform a "Do until" (which you will notice in the image above the one above) which checks, by again calling the API, when is the knowledgebase ready to be published. Once its ready, it calls the publish knowledgebase endpoint which can be seen below:
+\
+![Flow 4_3](./flow4_3.png)
+\
+Now to focus on the NO of the initial branch which is if there is a new QnA pairing in the SharePoint list.
+\
+![Flow 4_4](./flow4_4.png)
+\
+In the image above, you will notice another API call which has a separate body to if a QnA is modified. In this case what we are doing is providing some metadata to the values we are storing, in this case we use the ListID of the record from the SharePoint list. Title and Answer in the API call represent the Question and Answer pairing.
+\
+![Flow 4_5](./flow4_5.png)
+\
+In the image above, you will notice that some of these are similar to the YES branch of the system, specifically the Do until and set variable tasks. Similarly to earlier, this just performs a check to see when is the knowledgebase ready to be published, then publishes it. We have to add here a manual delay of 30 seconds as we do not know when it is done with publishing the knowledgebase. After that, we download the knowledgebase and parse its data. To simplify the last few steps in the flow without further confusion, the aim of this last portion is to extract the qnaID of the question and answer pair that we just stored from the knowledgebase and add that value to the Sharepoint list (stored as a value under the column name of qnaId). This will be useful later in case the item is modified. If you noticed, in the YES branch, we provide the qnaID to the API so it knows which QnA pair is in fact being modified.
+
+#### Implementation of the flow that allows deletion of QnA pairs from the knowledgebase
+![Flow 5](./flow5.png)
+\
+The above flow consists again of many parts. Just like before, the subscription key, kbID and endpoint variables are things that will need to be provided by the one deploying our system for this part to work properly. The key parts of this flow is that we first need to download the entire knowledgebase, then after we need to extract all the QnA pairs that came from our Sharepoint List. This is easy because we filter the pairs with the metadata containing "SPO". If you noticed in the API calls from the previous flow, we added a "SPO" into the metadata for the QnA pairs as well as the Sharepoint ItemID.
+![Flow 5_1](./flow5_1.png)
+\
+I have expanded the "Apply to each SPO Question" here. So once we get the data relating to just "SPO" we would loop through this and then do the following:
+![Flow 5_2](./flow5_2.png)
+\
+Then what we need to do is compare the metadata value, Sharepoint ItemID, of the QnA pair with the Sharepoint ItemID of the Sharepoint list item that has just been deleted. If we do find it, we would trigger the yes branch and delete the item from the knowledgebase. Similarly as before, it would be a API call to the knowledgebase that would look like below:
+\
+![Flow 5_3](./flow5_3.png)
+\
+Clearly, all we need to provide is the qnaId of the item we want to delete once it is matched. The qnaId can be directly obtained from the metadata of the QnA pair list item. After that we perform a "Do until" like before where we query the knowledgebase endpoint on whether or not the deletion is finished. Once finished, we would publish the knowledgebase for production use.
