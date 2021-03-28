@@ -16,9 +16,20 @@ Unit tests and integration tests have been applied where appropriate in the code
 
 ### Integration and Unit Testing
 
-#### TODO SHOW PIC OF THE TESTS PERFORMED AND WRITE UP ABOUT IT including cypress
+#### Integration testing
 
-FILLER
+We wrote integreation tests and used the front-end testing tool 'Cypress' to find bugs in our application. Cypress allowed us to stimulate tests as if a user is operating on the web app with the ability to see screenshots for each step. Cypress allowed us to write a customised  'login' commands which made writing our tests easier.
+
+In total, we wrote 8 integreation tests aggregating to 42 test cases, testing the individual functionality as well as the User Interface of the app as a whole. 
+
+##### Integration tests
+
+![Integration](./integration1.png)
+##### Test cases for each Integration test
+![Integration](./integration2.png)
+
+
+The different tests helped us find bugs for e.g. the microsoft learn search bar couldnt give search results for some of the test cases and then we solved those bugs for a better user experience.
 
 ### Performance Testing
 
@@ -28,15 +39,29 @@ FILLER
 
 ### Responsive Testing
 
-#### Show different views of our app (one for tablet, mobile and laptop)
+It was important to check how the user interface fits into different screen sizes like different mobiles, laptops and tablets so we did responsive testing through Google Chrome's Develepor Tools.
+#### Phone view
+![Phone view](./responsive1.png)
+#### Tablet view
+![Tablet view](./responsive2.png)
+#### Desktop view
+![Desktop view](./responsive3.png)
 
-FILLER
-
+The responsive testing helped us design the user interface which adjusts to the size of the screen making it easy to use on all devices.
 ### Compatibility Testing
 
 #### Test with different browsers and devices (android + ios + windows)
 
-FILLER
+We tested the compatibility of our web app using different browsers: Safari, Chrome and BROWSER.
+#### Chrome
+![Chrome](./browser1.png)
+#### Safari
+![Safari](./browser2.png)
+#### Firefox
+![Firefox](./browser3.png)
+
+The web app worked well with the popular browsers that we tested on adn made us confident in its compatibility.
+
 
 ### User Acceptance Testing
 
