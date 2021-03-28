@@ -108,6 +108,8 @@ and the only thing we would need during deployment is an authentication token fr
 Again a link to this is here:
 [https://developer.microsoft.com/en-us/graph/graph-explorer?request=me&version=v1.0](https://developer.microsoft.com/en-us/graph/graph-explorer?request=me&version=v1.0).
 
+---
+
 Another important API was the Microsoft Learn API. This was a simple catalogue which contains the details, in a JSON format, of all the modules and learning pathways that Microsoft provided.
 This was useful as our application would make a API call to retrieve this data and present it to the user in the case where they require assistance in a particular topic. In order to complete
 the module, students must head over to the actual website which our app would link to. Details regarding the MS Learn API is detailed below:
@@ -126,13 +128,43 @@ The response body of calling this API would look as follows:
 
 We are particularly interested in just modules and learning paths so the appropriate courses according to the user input can be extracted from there.
 
+---
+
+A final API that we have researched is LinkedIn Learning. Since UCL already provides free licenses for this to students, its a free resource that our application could surface. Currently, there is not existing code that uses that API. To use the API, we need to provide a client key and secret which we must obtain from the teaching and learning team at UCL. After receiving this, we would need to generate a token (or our app would have to do it during runtime) which would be used in combination with the students search in order to generate a result. A detailed explanation can be found on this link: [Link to Linkedin Learning API](https://docs.microsoft.com/en-us/linkedin/learning/overview/). This provides a thorough breakdown on how to use the API to make calls and get the data. We would very simply need to make a GET request as below:
+```json
+GET https://api.linkedin.com/v2/{service}/{resourceIdentifier}
+```
+In here we specify the service and resource that we want. For example, we can tell the API to specifically return videos, modules or learning pathways. Unlike MS Learn we cannot cache the data directly into the application as it would not only be too large but impossible. Additionally, due to the way the API works, there would be a fair delay before students would get their search results compared to MS Learn. Below is a sample response of calling the API:
+```json
+{
+    "urn": "urn:li:lyndaCourse:563322",
+    "title": {
+        "locale": {
+            "country": "US",
+            "language": "en"
+        },
+        "value": "Measuring Company Culture"
+    }
+}
+```
+The response can be filtered in the Linkedin Learning API for the following things:
+- Availability - The availibility of the learning asset
+- availableLocales - 	The locales the learning asset is available in.
+- classifications - The learning classifications the learning asset is tagged with.
+- description - If present, the text-only description of the learning asset, localized if available. Any HTML markup will be stripped from this description.
+- urls - The URLs that can be used to launch the learning asset.
+
+Due to the number of fields, we have omitted the remaining values but if you would like to know about them please check this link: [Response Fields](https://docs.microsoft.com/en-us/linkedin/learning/reference/learningassets#response-fields)
+
+---
+
 The APIs we have researched have been quite limited as our client, Dean, was very specific with what he wanted and so our research in the API section is short.
 
 ## Summary
 To summarise, we have decided to go ahead with a Single Page application, particularly React, for the front end development of our web application. 
 This is because React has a React Native version so in the future a mobile application can be developed more easily. Additionally, the backend store would be a Azure Cosmos DB
 in order to store user settings and preferences. The storage of user requests (ticketing system) like things they need help in would be a Sharepoint site, so staff can view it and directly respond to the student which was in fact a direct requirement of our client. This automation of data to the Sharepoint list would be facilitated by a Microsoft Flow. Also, we have decided to use the Microsoft Graph API as it is the only appropriate API available to make the application more native for the user (for example retrieve
-data like their name, meetings etc.). We have also decided to go ahead with using the Microsoft Learn API to get courses because it would be readily available to students since universities which use Microsoft services are naturally given access to it.
+data like their name, meetings etc.). We have also decided to go ahead with using the Microsoft Learn API and Linkedin Learning API to get courses because it would be readily available to students since universities which use Microsoft services are naturally given access to it.
 
 ## Footnotes and References
 
