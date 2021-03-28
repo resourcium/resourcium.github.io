@@ -26,7 +26,7 @@ The QnA bot is a simple embed which automatically handles user requests and resp
 With regards to the forms section of the app, they are very simply links to Microsoft Forms that students fill out. The processing that happens after the form is submitted is independent of the app itself. What happens is a Microsoft Flow automates data to a Sharepoint list and PowerBi, this in turn produces real time streaming data in order to generate a dashboard to be viewed by staff in a Sharepoint site. This flow also triggers an email to the person who filled out the "Additional Help" form to acknowledge their request.
 
 ## Class Diagram
-Our system does not require a class diagram as it is a web application that does not utilise a class based design. Dr Yun Fu has confirmed this with our team.
+Our system does not require a class diagram as it is a web application that does not utilise a class based design. Dr Yun Fu has confirmed that our team does not require a class diagram.
 
 ## Entity relationship diagram
 Our database is technically schemaless but we follow the pattern below:
@@ -48,6 +48,11 @@ The above screenshot is a SharePoint list that stores data for the Student Stres
 \
 \
 The above screenshot is a SharePoint list that stores and updates the QnA pairings. This list is connected to the knowledgebase of the QnA Bot and updates it in turn. For more information on this please check the implementation page for more details on this.
+
+
+## Sequence Diagram
+Below is an example sequence diagram of one of our use cases of our system. This particularly covers a student coming into our web application in order to search for the resources. Out of all use cases, this would be the most complicated sequence diagram, if sequence diagrams for other use cases would be designed they would be very similar to the one shown below:
+![sequence diagram](./seqdiag.png)
 
 ## Sitemap Diagram
 

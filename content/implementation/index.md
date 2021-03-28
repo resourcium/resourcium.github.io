@@ -142,6 +142,7 @@ The above flow consists again of many parts. Just like before, the subscription 
 ![Flow 5_1](./flow5_1.png)
 \
 I have expanded the "Apply to each SPO Question" here. So once we get the data relating to just "SPO" we would loop through this and then do the following:
+\
 ![Flow 5_2](./flow5_2.png)
 \
 Then what we need to do is compare the metadata value, Sharepoint ItemID, of the QnA pair with the Sharepoint ItemID of the Sharepoint list item that has just been deleted. If we do find it, we would trigger the yes branch and delete the item from the knowledgebase. Similarly as before, it would be a API call to the knowledgebase that would look like below:
