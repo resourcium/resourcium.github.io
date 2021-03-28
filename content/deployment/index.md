@@ -10,9 +10,9 @@ Our system is split into two distinct halves. One is the app which includes the 
 
 ## I - The Sharepoint deployment 
 
-The Sharepoint deployment must happen before the app deployment as the app depends on URLs from the Sharepoint deployment.
+The Sharepoint deployment must happen before the app deployment as the app depends on URLs from the Sharepoint deployment. Below is the guide for SharePoint deployment:
+[Deployment Guide](https://sites.google.com/view/team29deploymentguide/home)
 
- 
 
 ## II - The app deployment
 

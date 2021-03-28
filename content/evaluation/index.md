@@ -18,7 +18,7 @@ There is currently no known bugs, which we have identified during testing of the
 during testing or implementation stages. This helped to keep the bug list empty.
 
 #### Individual contribution table
-NEED TO DO
+![Dist Table](./m3.png)
 
 
 ### Critical evaluation of project
@@ -38,7 +38,8 @@ Overall, we give ourselves "very good" for functionality completion
 \
 \
 \
-- Stability: Our team has done a lot of testing and achieved a good test coverage. We also have continuous integration setup within our github repository which is a formatter and linter ensuring the code written is to a good quality and standard. With these measures and a high test coverage, we can say the application is stable.
+- Stability: Our team has done a lot of testing, having written more than 50 quality tests for unit and integration testing. We were sadly unable generate a coverage report due to the version of React we were using (one higher than the one the coverage report allows). The tests do not only include the web application, the tests also include MS Flows testing (which was manual) which is key part of our system to automate data to SharePoint to be used by lecturers and course representatives. During user acceptance testing, the flows had run successfully, as mentioned on the testing page. Even though we have not performed proper stress testing on the MS Flows, due to the lack of devices, testers and time, Microsoft has stated that all the flows we have created can have a 1000 concurrent runs within a minute.
+We also have continuous integration setup within our github repository which is a formatter and linter ensuring the code written is to a good quality and standard.
 \
 \
 Overall, we give ourselves "good" for the stability section.
