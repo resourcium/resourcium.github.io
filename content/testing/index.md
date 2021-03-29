@@ -47,9 +47,20 @@ Here you can see all the unit tests passing:
 
 ### Performance Testing
 
-#### PIC + WRITEUP FOR THIS?
+Using Firefox developer tools we can see the time it takes for our application to query various endpoints:
 
-FILLER
+| Endpoint                 | Sample #1 (ms) | Sample #2 (ms) | Sample #3 (ms) | Average (ms) |
+| ------------------------ | -------------- | -------------- | -------------- | ------------ |
+| Initial Load             | 62             | 22             | 21             | 35           |
+| Get settings             | 271            | 181            | 254            | 235          |
+| Update settings          | 203            | 177            | 196            | 192          |
+| Setup 2fa                | 314            | 192            | 209            | 238          |
+| Verify 2fa               | 218            | 246            | 213            | 226          |
+| Register                 | 218            | 175            | 235            | 209          |
+| Microsoft learn (cached) | 15             | 10             | 12             | 12           |
+| Linkedin Learning        | 2,020          | 2,230          | 2,050          | 2100         |
+
+
 
 ### Responsive Testing
 
