@@ -10,7 +10,7 @@ Problem Statement:
 \
 Within a university environment, student engagement and wellbeing is the key for success.
 However, it can be the case that current systems lack the ability to manage student engagement.
-We are working with UCL for this project in conjunction with Microsoft and IBM to develop a web
+We are working with UCL for this project in conjunction with Microsoft to develop a web
 application that assists in data collection for what students like and need. 
 It can be a series of micro apps or component functionality that can extend the app interface.
 It will have a web portal as well as a cross platform mobile and app implementation. The system needs to be generic enough to work for several universities. A native approach for the cross-platform is not required, it should be responsive enough to adapt.
@@ -67,10 +67,10 @@ The development team is composed of three people: Hemil Shah, Pritika Shah and L
 
 #### Term 1
 
-![Term 1](/images/gant_term_1.png)
+<img alt="Term 1" src="{{ get_url(path="/images/gant_term_1.png") }}"/>
 
 #### Term 2
 
-![Term 2](/images/gant_term_2.png)
+<img alt="Term 2" src="{{ get_url(path="/images/gant_term_2.png") }}"/>
 
 Website Template from: [https://github.com/BlackrockDigital/startbootstrap-clean-blog](https://github.com/BlackrockDigital/startbootstrap-clean-blog).
