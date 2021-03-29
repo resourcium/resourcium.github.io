@@ -8,7 +8,9 @@ This page contains the user manual, deployment manual and legal issues and proce
 
 ### User Manual
 ---
-https://drive.google.com/file/d/16ZBPm8gkbL-S01gn4Bn1uSyCVCcG4S6I/view?usp=sharing
+Here is the user manual for the web application (students): [Link to manual](https://drive.google.com/file/d/16ZBPm8gkbL-S01gn4Bn1uSyCVCcG4S6I/view?usp=sharing)
+
+Here is the user manual for lecturers (Sharepoint site): [Link to manual](https://drive.google.com/file/d/14NbWAQz7_IMVK0YVy-QjUTGU-ZaiTsbI/view?usp=sharing)
 
 ### Deployment Manual
 ---
