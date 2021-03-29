@@ -26,6 +26,7 @@ Our achievement would be students being able to receive the help and support the
 
 ### 2 minute video
 
+{{ video(path = "/video.mp4") }}
 
 ### The development team
 
