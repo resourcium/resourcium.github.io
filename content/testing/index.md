@@ -82,8 +82,7 @@ We tested the compatibility of our web app using different browsers: Safari, Chr
 ![Chrome](./browser1.png)
 #### Safari
 ![Safari](./browser2.png)
-#### Firefox
-![Firefox](./browser3.png)
+The user interface was very intuitive and the links were a good feature.
 
 The web app worked well with the popular browsers that we tested on and made us confident in its compatibility.
 
@@ -92,7 +91,13 @@ The web app worked well with the popular browsers that we tested on and made us 
 
 #### Test with users around 5-6
 
-FILLER - REPLACE THIS WITH RESULTS FROM THE FORMS HANDED IT AND SUMMARISE THE RESULTS
+We wanted to check how actual users would respond to our application we shared the link where they could use the application on their own devices and handed out feedback forms to analyse their responses.
+
+#### Summary of the responses
+![User Testing](./usertesting.png)
+
+The average response from the users has been very positive, making us confident in our development. An interesting suggestion was a tutorial for the first time a user log's in to help with navigation and understanding the application but we think the user manual would be suffice for that.
+
 
 #### Feedback from client
 
