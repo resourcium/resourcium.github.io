@@ -158,13 +158,17 @@ Due to the number of fields, we have omitted the remaining values but if you wou
 
 ---
 
+The research for the QnABot was not too difficult as our technology partner shared with us a simple way to set one up through Azure. If more details are required please check this link: [QnABot](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base?tabs=v1). Essentially, we would need to setup a few resources including a QnAMaker resource and a web app bot that is connected to a knowledgebase. Then in order to actually update the knowledgebase we would need to find appropriate API calls to add QnA pairings to the knowledgebase. We then found this link: [API for QnABot](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff). This API lets us update the knowledgebase of the QnABot but we would need to provide certain parameters. These included the knowledgebase ID, the endpoint and the subscription key. All these can be found from the resources we create in Azure. Very simply, we would need to make a POST request to the QnA API, providing the above things as well as the QnA pair we would like to add. Then, we would need to check whether or not the knowledgebase is ready to be published. Note: Adding a QnA pair does not automatically publish it for production. The adding only performs the training for the bot in the knowledgebase. The publishing of the knowledgebase to the live version would have to be done by another API call. This would be a POST request to the same API but different request URL. This is useful because Microsoft Flows has the power to perform HTTP requests meaning we can setup the flows to perform these API calls directly from a SharePoint list that contains these QnA pairings.
+
+---
+
 The APIs we have researched have been quite limited as our client, Dean, was very specific with what he wanted and so our research in the API section is short.
 
 ## Summary
 To summarise, we have decided to go ahead with a Single Page application, particularly React, for the front end development of our web application. 
 This is because React has a React Native version so in the future a mobile application can be developed more easily. Additionally, the backend store would be a Azure Cosmos DB
 in order to store user settings and preferences. The storage of user requests (ticketing system) like things they need help in would be a Sharepoint site, so staff can view it and directly respond to the student which was in fact a direct requirement of our client. This automation of data to the Sharepoint list would be facilitated by a Microsoft Flow. Also, we have decided to use the Microsoft Graph API as it is the only appropriate API available to make the application more native for the user (for example retrieve
-data like their name, meetings etc.). We have also decided to go ahead with using the Microsoft Learn API and Linkedin Learning API to get courses because it would be readily available to students since universities which use Microsoft services are naturally given access to it.
+data like their name, meetings etc.). We have also decided to go ahead with using the Microsoft Learn API and Linkedin Learning API to get courses because it would be readily available to students since universities which use Microsoft services are naturally given access to it. We have also decided to make use of the QnABot directly from Azure as it would be a simple bot setup and easily applicable for any university.
 
 ## Footnotes and References
 
