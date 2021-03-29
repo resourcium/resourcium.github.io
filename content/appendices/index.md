@@ -14,8 +14,7 @@ https://drive.google.com/file/d/16ZBPm8gkbL-S01gn4Bn1uSyCVCcG4S6I/view?usp=shari
 ---
 
 {{ internal_link(path="@/deployment/index.md", label="Link to the deployment manual") }}
-<br />
-
+\
 ### A legal statement on source code rights, IP (intellectual property) rights, GRPR of data governance
 ---
 #### Major milestones and Quality Gates
