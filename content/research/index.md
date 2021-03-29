@@ -88,7 +88,7 @@ We spent a significant amount of time researching into Terraform but during deve
 
 Terraform is a program that lets you declare the exact state of the deployed cloud resources and it can then query the Azure API to deploy them. If we ever change the configuration Terraform can handle the incremental updates without destroying and redeploying the resources. There are two providers for Terraform that are designed for deploying Azure resources [azurerm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs) and [azuread](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs).
 
-TODO: Mention ARM templates
+We also experimented with Azure Resource Manager (ARM) templates but they have relatively limited functionality and are difficult to automate.
 
 ### Python Script
 
