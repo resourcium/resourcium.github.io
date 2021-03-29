@@ -51,6 +51,17 @@ The development team is composed of three people: Hemil Shah, Pritika Shah and L
 
 <br />
 
+#### Pritika Shah
+
+<br />
+<img alt="Pritika Shah" src="{{ get_url(path="/images/pritikapic.jpg") }}" style="max-width: 200px" />
+
+- pritika.shah.19@ucl.ac.uk
+- Front end developer, Tester 
+- {{ external_link(url="https://github.com/pritsspritss") }}
+
+<br />
+
 ### Project Management
 
 #### Term 1
