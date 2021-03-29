@@ -66,10 +66,10 @@ The development team is composed of three people: Hemil Shah, Pritika Shah and L
 
 #### Term 1
 
-![Term 1](/images/gant_term_1.png)
+<img alt="Term 1" src="{{ get_url(path="/images/gant_term_1.png") }}"/>
 
 #### Term 2
 
-![Term 2](/images/gant_term_2.png)
+<img alt="Term 2" src="{{ get_url(path="/images/gant_term_2.png") }}"/>
 
 Website Template from: [https://github.com/BlackrockDigital/startbootstrap-clean-blog](https://github.com/BlackrockDigital/startbootstrap-clean-blog).
