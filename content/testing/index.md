@@ -89,8 +89,6 @@ The web app worked well with the popular browsers that we tested on and made us 
 
 ### User Acceptance Testing
 
-#### Test with users around 5-6
-
 We wanted to check how actual users would respond to our application we shared the link where they could use the application on their own devices and handed out feedback forms to analyse their responses.
 
 #### Summary of the responses
