@@ -61,10 +61,13 @@ a lot of our system is dependent on other 3rd party services and systems, which 
 \
 \
 With regards to open source materials and implementations, we have made use of many open source libraries built-in to Node and React. All those libraries are under the open source
-license  and are free for editing. Our code uses these libraries. To use some of the features, a license is required for example Microsoft Flow. The necessary licenses, subscriptions and
-costs will be detailed in the 'Manufacture Process and Deployment Costing'.
-\
-\
+license and are free for editing. All images that we have used are either open source or made by us. To use some of the features, a license is required for example Microsoft Flow. The necessary licenses, subscriptions and costs will be detailed in the 'Manufacture Process and Deployment Costing'. Below are the libraries we have used with their respective licenses:
+- React library (useState and useEffect) -> Open Source (MIT)
+- ReactTwitchEmbedVideo -> Open Source (MIT)
+- QRCode -> Open Source (MIT)
+- SVG Icons on navigation bar + fontawesome library -> Open Source (MIT)
+- MS Bot Framework -> Open Source (MIT)
+
 The source code agreement that is the most logical is open source. Firstly, the aim of the application is to solve student engagement and wellbeing issues within a university environment which is not limited to just UCL. There is no data or packages on the system that prevent it from being shown freely. This means that other universities can download it, use it and distribute it to others. In our case our open source software will be free to be used. An appropriate sub category of open source this would fall under is the MIT license. This type of license is one of the most
 permissive licenses available. Copies of the software can be made but a copy of the MIT license and copright notice must be added to it.
 \
@@ -88,8 +91,13 @@ To conclude, our application does not have a data privacy concern as our applica
 
 Since our system is based off the cloud and many Azure services as well as other subscriptions. Universities will need be a tenant with Microsoft, they will need access to Microsoft 365 including MS Forms, MS Flows Premium, MS Sharepoint. Subscriptions for LinkedinLearning and Microsoft Learn will also be required for it to be usable by the application.
 Below is the cost list for each individual part of the app:
+- Azure functions:  $0.20 per million executions and $0.000016/GB-s (GB-s is RAM used times seconds executed)
+- Cosmos db: $0.008/hour per 100 requests
+- MS Flows: £15 per month (per user plan)
+- QnABot: First 10,000 messages are free, then every 1000 premium message costs £0.37 (estimated)
+- QnAMaker resource: Free option (3 transactions per second) or paid option ($10 per month for unlimited documents)
 
-# to complete
+We cannot estimate the full cost for the client to run the application as we do not know at what scale the application will be used. We would need statistics and data to perform accurate estimates.
 
 ### Compliance of ADA and WCAG 2.2
 
