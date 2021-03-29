@@ -18,9 +18,9 @@ Unit tests and integration tests have been applied where appropriate in the code
 
 #### Integration testing
 
-We wrote integreation tests and used the front-end testing tool 'Cypress' to find bugs in our application. Cypress allowed us to stimulate tests as if a user is operating on the web app with the ability to see screenshots for each step. Cypress allowed us to write a customised  'login' commands which made writing our tests easier.
+We wrote integration tests and used the front-end testing tool 'Cypress' to find bugs in our application. Cypress allowed us to stimulate tests as if a user is operating on the web app with the ability to see screenshots for each step. Cypress allowed us to write a customised  'login' commands which made writing our tests easier.
 
-In total, we wrote 8 integreation tests aggregating to 42 test cases, testing the individual functionality as well as the User Interface of the app as a whole. 
+In total, we wrote 8 integration tests aggregating to 42 test cases, testing the individual functionality as well as the User Interface of the app as a whole. 
 
 ##### Integration tests
 
@@ -29,7 +29,21 @@ In total, we wrote 8 integreation tests aggregating to 42 test cases, testing th
 ![Integration](./integration2.png)
 
 
-The different tests helped us find bugs for e.g. the microsoft learn search bar couldnt give search results for some of the test cases and then we solved those bugs for a better user experience.
+The different tests helped us find bugs for e.g. the microsoft learn search bar couldn't give search results for some of the test cases and then we solved those bugs for a better user experience.
+
+#### Unit Testing
+
+Our Integration tests helped test the specific pages within our application and even though they made up the bulk of the code they were some components that we could individually test using unit tests.
+
+We used the `jest` framework to run our client side tests. This was built into `react` which made it very convenient. We focused on testing components that were separated from the actual pages (since the Cypress tests already covered those). This included the tabs and links sections but the most useful tests were our API tests.
+
+These API tests allowed us to test both our server side back end and the functions we wrote on the client side to integrate with them. In writing these tests we discovered a bug in our local functions that we promptly fixed.
+
+We used a mixture of assertions and snapshot testing. Snapshot testing is where you store a known "good" response from the functions and then update it manually if we update the app.
+
+Here you can see all the unit tests passing:
+
+![unit tests](./unit_tests.png)
 
 ### Performance Testing
 
@@ -39,7 +53,7 @@ FILLER
 
 ### Responsive Testing
 
-It was important to check how the user interface fits into different screen sizes like different mobiles, laptops and tablets so we did responsive testing through Google Chrome's Develepor Tools.
+It was important to check how the user interface fits into different screen sizes like different mobiles, laptops and tablets so we did responsive testing through Google Chrome's Developer Tools.
 #### Phone view
 ![Phone view](./responsive1.png)
 #### Tablet view
@@ -60,7 +74,7 @@ We tested the compatibility of our web app using different browsers: Safari, Chr
 #### Firefox
 ![Firefox](./browser3.png)
 
-The web app worked well with the popular browsers that we tested on adn made us confident in its compatibility.
+The web app worked well with the popular browsers that we tested on and made us confident in its compatibility.
 
 
 ### User Acceptance Testing
@@ -99,7 +113,7 @@ If the flow does run successfully, then a positive response shows as shown below
 
 ![Test 3](./test3.png)
 1. At the beginning of testing the flow I would click on manual and then the test button. This will put the flow in a testing state. 
-2. Although the trigger for this sytem is values being added to a SharePoint list, it is easier to do this through filling out a form which will in-turn run this flow.
+2. Although the trigger for this system is values being added to a SharePoint list, it is easier to do this through filling out a form which will in-turn run this flow.
 Since the flow ran successfully, the following response is produced:
 ![Test 3 Final](./test3_1.png)
 
