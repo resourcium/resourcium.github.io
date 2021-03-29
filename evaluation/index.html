@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="UCL Resourcium | Evaluation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evaluation</title>
+    <link href="&#x2F;vendor&#x2F;fontawesome-free&#x2F;css&#x2F;all.min.css" rel="stylesheet" type="text/css">
+    <link href="&#x2F;vendor&#x2F;bootstrap&#x2F;css&#x2F;bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="&#x2F;styles&#x2F;clean-blog.min.css" rel="stylesheet">
+    <link href="&#x2F;styles&#x2F;custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="&#x2F;home&#x2F;">Project Analysis</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;home&#x2F;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;requirements&#x2F;">Requirements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;research&#x2F;">Research</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;uidesign&#x2F;">UI/UX Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;systemdesign&#x2F;">System Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;implementation&#x2F;">Implementation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;testing&#x2F;">Testing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;evaluation&#x2F;">Evaluation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;appendices&#x2F;">Appendices</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://team2971923729.wordpress.com/">Development Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead" style="background-image: url('&#x2F;images&#x2F;home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Evaluation</h1>
+            <span class="subheading">Team 29</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <div class="container">
+      <h2 id="introduction">Introduction</h2>
+<p>This page explains the summary of achievements, critical evaluation of the project and future work.</p>
+<h3 id="summary-of-achievements">Summary of achievements</h3>
+<hr />
+<h4 id="achievement-table-for-moscow-list">Achievement Table for MoSCoW list</h4>
+<p><img src="./m.png" alt="MoSCoW List" />
+<img src="./m2.png" alt="MoSCoW List2" /></p>
+<h4 id="list-of-known-bugs">List of known bugs</h4>
+<p>There is currently no known bugs, which we have identified during testing of the application. Our team used github issue tracker in order to keep track of bugs that we may have encountered
+during testing or implementation stages. This helped to keep the bug list empty.</p>
+<h4 id="individual-contribution-table">Individual contribution table</h4>
+<p><img src="./m3.png" alt="Dist Table" /></p>
+<h3 id="critical-evaluation-of-project">Critical evaluation of project</h3>
+<hr />
+<p>In this section we will critically evaluate our project with respect to the following factors:</p>
+<ul>
+<li>User interface: We have used a common system of having a navigation bar to go through the different pages. We also ensured that simplicity and readability were kept as the top target for the web application. Generally, the UI is easy to use as described by our testers. They are happy with how easily accessible everything is on the web application. We have put in a lot of work to make the system clean and user friendly. However, the only downside to the UI would be its desktop version. Responsive testing for different screen sizes suggests that even though the UI is readable and usable, it does not look as visually appealing. This is documented as part of the future work. For more information on the testing, head over to the testing section.
+<br />
+<br />
+Overall, we can mark ourselves &quot;good&quot; for the UI work.
+<br />
+<br />
+</li>
+<li>Functionality: Since we have achieved all the key functionalities and 40% of the optional functionalities, the app can be seen as providing a lot functionality. We have made sure to use a generic system design so other universities can deploy scripts to setup the web application for their own use. Students can view twitter, twitch, find links within their university, look for resources on Linkedin Learning, look for resources within MS Learn, communicate with a QnA bot for queries, report their stress levels, get additional help on their studies or modules and change their preferences from the settings page. Most importantly students can also register for their lectures (this applies to our UCL client only for which a backend is being developed by the ORCA team).
+<br />
+<br />
+Overall, we give ourselves &quot;very good&quot; for functionality completion
+<br />
+<br />
+</li>
+<li>Stability: Our team has done a lot of testing, having written more than 50 quality tests for unit and integration testing. We were sadly unable generate a coverage report due to the version of React we were using (one higher than the one the coverage report allows). The tests do not only include the web application, the tests also include MS Flows testing (which was manual) which is key part of our system to automate data to SharePoint to be used by lecturers and course representatives. During user acceptance testing, the flows had run successfully, as mentioned on the testing page. Even though we have not performed proper stress testing on the MS Flows, due to the lack of devices, testers and time, Microsoft has stated that all the flows we have created can have a 1000 concurrent runs within a minute.
+We also have continuous integration setup within our github repository which is a formatter and linter ensuring the code written is to a good quality and standard.
+<br />
+<br />
+Overall, we give ourselves &quot;good&quot; for the stability section.
+<br />
+<br />
+</li>
+<li>Efficiency: Throughout the entire project we aimed to maximise performance. To do this, we used React as its been made to minimize costly DOM operations that in turn update the UI. In this case, not much extra work was needed to maximise the performance of the UI. However, even though the application loads up quickly and performs the basic operations well, in some cases it is slow. For example, when using the Linkedin Learning API to search for results, users have to wait for upto 8 seconds to receive UI feedback. We recognise that it is not the fault of our application as it is in fact the API that sends the results slowly. Overall, we have kept in mind that ultimately students will not have time to wait too much and ensured that majority of the UI loads in quickly.
+<br />
+<br />
+Overall, in this section we give ourselves &quot;good&quot;.
+<br />
+<br />
+</li>
+<li>Compatibility: Ever since the project started we made sure to keep the devices and system the end-user would have. In this case, devices and systems would range from different browsers (chrome,firefox etc.) to different device types (tablets, mobile phones and laptops). We have conducted appropriate responsive testing and compatibility testing with different browsers and are proud to say that it works successfully on all browsers and screen sizes. However, user acceptance suggested that even though the UI for the laptop version was neat, it strayed from a &quot;standard&quot; design for larger screens which normally involved having a navigation bar at the top.
+<br />
+<br />
+In this area, we give ourselves &quot;good&quot; in terms of responsive design.
+<br />
+<br />
+</li>
+<li>Maintainability: The code base is well documented via integration/unit tests (&quot;tests as documentation&quot;) allowing developers to easily follow the codebase and extend upon it as necessary. Due to our component based design, the architecture can easily be changed without the code breaking. We have created essentially a component-based functionality but it is not fully extensible as it would require whats called &quot;shotgun surgery&quot;. This means in order to add one component many different classes would need to be changed to facilitate that. Due to our lack of time we were unable to make this as a base architecture, and hence have written about this in future works.
+<br />
+<br />
+As the code is well-documented via appropriate tests, we can give ourselves &quot;very good&quot; here.
+<br />
+<br />
+</li>
+<li>Project Management: This was difficult to do as one of our team members was an international student so communication and synchronisation was difficult. However, we made sure to set up meetings 24 hours prior to meeting them. Additionally, in the 2nd term we took a sprint based approach to the project where we would have regular stand-ups during the week at 10:30am. Github issue tracker was consistently used with the sprint boards to assign tasks to each member (as well as self assign). We could have potentially used Notion for the project instead which is deemed by many to be better and easier to use.
+<br />
+<br />
+In this area, we give ourselves &quot;good&quot; because even though we completed the project with changing requirements, one of the members failed to communicate well-enough.
+<br />
+<br />
+</li>
+</ul>
+<h3 id="future-work">Future Work</h3>
+<hr />
+<p>If we had more time the following things is what would be appropriate to look into:</p>
+<ol>
+<li>The first thing that should be done is that there should be a redesign of the user interface for the desktop version of the site. Even though the website scales well into a desktop version,
+it deviates from how a standard desktop site looks. However, the user interface looks good on tablet and mobile devices.</li>
+<li>A native version of the web application should be made. Since the app already exists as a React application, it would be appropriate to make a corresponding mobile application in React Native. This will probably improve the experience of the user as well.</li>
+<li>The architecture of the web application can be redesigned so that it is extensible, currently the system does allow extensibility but requires modification of a fair number of parts of the application. So a redesign of the base of the system to instead use &quot;extends&quot; from a single App component to add more components would make the system significantly neater.</li>
+<li>Considering universities want to learn on student stresses and wellbeing, data collected from the application can be mined via machine learning in terms of their wants and needs. Our system currently just stores this data and displays it.</li>
+</ol>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="&#x2F;vendor&#x2F;jquery&#x2F;jquery.min.js"></script>
+    <script src="&#x2F;vendor&#x2F;bootstrap&#x2F;js&#x2F;bootstrap.bundle.min.js"></script>
+    <script src="&#x2F;scripts&#x2F;clean-blog.min.js"></script>
+  </body>
+</html>

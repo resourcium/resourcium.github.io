@@ -1,0 +1,7 @@
+img {
+  max-width: 100%;
+}
+
+#mainNav > .container {
+  max-width: 100% !important;
+}

@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="UCL Resourcium | Implementing SSO with Microsoft Accounts (for Single Page Apps)">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Implementing SSO with Microsoft Accounts (for Single Page Apps)</title>
+    <link href="&#x2F;vendor&#x2F;fontawesome-free&#x2F;css&#x2F;all.min.css" rel="stylesheet" type="text/css">
+    <link href="&#x2F;vendor&#x2F;bootstrap&#x2F;css&#x2F;bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="&#x2F;styles&#x2F;clean-blog.min.css" rel="stylesheet">
+    <link href="&#x2F;styles&#x2F;custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="&#x2F;home&#x2F;">Project Analysis</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;home&#x2F;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;requirements&#x2F;">Requirements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;research&#x2F;">Research</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;uidesign&#x2F;">UI/UX Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;systemdesign&#x2F;">System Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;implementation&#x2F;">Implementation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;testing&#x2F;">Testing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;evaluation&#x2F;">Evaluation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;appendices&#x2F;">Appendices</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://team2971923729.wordpress.com/">Development Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead" style="background-image: url('&#x2F;images&#x2F;home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Implementing SSO with Microsoft Accounts (for Single Page Apps)</h1>
+            <span class="subheading">Team 29</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <div class="container">
+      <p><strong>Project:</strong> UCL Resourcium</p>
+<p><strong>Team members:</strong> Louis de Wardt (<a href="https://github.com/louisdewar/" target="_blank">
+https://github.com/louisdewar/
+</a>), Hemil Shah (<a href="https://www.linkedin.com/in/hemil-shah-58747b161/" target="_blank">
+https://www.linkedin.com/in/hemil-shah-58747b161/
+</a>), Pritika Shah (<a href="https://github.com/pritsspritss/" target="_blank">
+https://github.com/pritsspritss/
+</a>)</p>
+<p>With the complexities that come with setting up your own database to make a login system, the best alternative would be to use Microsoft live login instead. This works by “handing” over responsibilities of login management to Microsoft as well as security technicalities. Having to design your own database with login and passwords also slows the development process, giving you less time as developers to focus on things that you need. Our project aimed to allow an easy way for students to access our application and get assistance. The simplest answer was for students to use their existing login (also known as SSO ‘Single Sign On’) to access apps. This does not only simplify things for the developer, but also the user themselves since it reduces the need for them to remember another set of usernames and passwords. This article will explain in detail on how you can setup your application to use live login directly with Microsoft.</p>
+<p>This is designed to work for single page apps, if your app involves a web server serving each page separately then you will need to use a slightly different login flow (specifically the <code>Web</code> flow rather than the <code>Single-page application</code>)</p>
+<h2 id="setting-everything-up">Setting everything up</h2>
+<ol>
+<li>You need an app registration on Azure Active Directory. Go to Active Directory -&gt; App Registrations -&gt; New Registration. We chose <code>SSO Example App</code>  for the app name but you can choose your own app name. You need to decide for yourself whether your app should be single or multi-tenant. We can skip the redirect URL for now but we'll need to come back to that.</li>
+</ol>
+<p>These screenshots describe this process visually:</p>
+<p><img src="./app_registrations.png" alt="" /></p>
+<p>Press the new registration button:</p>
+<p><img src="./new_registration_button.png" alt="" /></p>
+<p><img src="./new_registration_form.png" alt="" /></p>
+<ol start="2">
+<li>
+<p>You need a web based application with a button that can trigger the sign on event. An example of a simple one can be found at the end. This application also needs to be hosted on a URL. For development it is common to use <code>localhost</code>. For example react applications would be <code>http://localhost:3000</code>. If your application is composed of just static files then you'll need a local web server to host them. A simple way is to use the following command (assuming you have python installed) <code>python3 -m http.server 3000</code> which will broadcast the current directory to your local computer on port <code>3000</code>, you should be able to access your website at <code>http://localhost:3000</code> in your browser.</p>
+</li>
+<li>
+<p>In the app registration you need to add the URL of your app to the list of allowed redirect URLs. To do this go to Authentication -&gt; Add a Platform -&gt; Single-page application. Then enter the redirect URL and then press configure (leave all the other values as their defaults). When you publish your app you will also need to add the public URL of the app as another redirect URL.</p>
+</li>
+</ol>
+<p>Here you can see screenshots showing each step:</p>
+<p><img src="./authentication.png" alt="" /></p>
+<p>Here you should choose <code>Single-page application</code>:</p>
+<p><img src="./choose_single_page_app.png" alt="" /></p>
+<p>Enter in the redirect URL (such as <code>http://localhost:3000</code>)</p>
+<p><img src="./platform_form.png" alt="" /></p>
+<h2 id="code">Code</h2>
+<ol>
+<li>
+<p>Add the MSAL library for JavaScript as a dependency to your project. There are multiple ways of doing this. You can either run <code>npm install @azure/msal-browser</code> or use a CDN. This is documented officially <a href="https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/README.md#prerequisites">here</a>.</p>
+</li>
+<li>
+<p>You need to copy the App ID and, if you are using single tenant, you also need the tenant ID. This information can be found in the <code>Overview</code> section of the App Registration.</p>
+</li>
+</ol>
+<p>Create a variable to store this information:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-js" data-lang="js"><span style="color:#b48ead;">var </span><span style="color:#bf616a;">msalConfig </span><span style="color:#c0c5ce;">= {
+</span><span style="color:#c0c5ce;">  auth: {
+</span><span style="color:#c0c5ce;">    clientId: &quot;</span><span style="color:#a3be8c;">{{APP_ID}}</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">    </span><span style="color:#65737e;">// Only required if single tenant (remove if multi-tenant)
+</span><span style="color:#c0c5ce;">    authority:
+</span><span style="color:#c0c5ce;">      &quot;</span><span style="color:#a3be8c;">https://login.microsoftonline.com/{{TENANT_ID}}</span><span style="color:#c0c5ce;">&quot;,
+</span><span style="color:#c0c5ce;">  },
+</span><span style="color:#c0c5ce;">};
+</span></code></pre>
+<ol start="3">
+<li>Now we can create a function to start the login process:</li>
+</ol>
+<pre style="background-color:#2b303b;">
+<code class="language-js" data-lang="js"><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">login</span><span style="color:#c0c5ce;">() {
+</span><span style="color:#c0c5ce;">  </span><span style="color:#b48ead;">var </span><span style="color:#bf616a;">msalInstance </span><span style="color:#c0c5ce;">= new msal.PublicClientApplication(</span><span style="color:#bf616a;">msalConfig</span><span style="color:#c0c5ce;">);
+
+</span><span style="color:#c0c5ce;">  </span><span style="color:#bf616a;">msalInstance
+</span><span style="color:#c0c5ce;">  </span><span style="color:#65737e;">// Here you can specify scopes (see example code for more details)
+</span><span style="color:#c0c5ce;">    .</span><span style="color:#8fa1b3;">loginPopup</span><span style="color:#c0c5ce;">({})
+</span><span style="color:#c0c5ce;">    .</span><span style="color:#96b5b4;">then</span><span style="color:#c0c5ce;">((</span><span style="color:#bf616a;">response</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">      </span><span style="color:#b48ead;">if </span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">response </span><span style="color:#c0c5ce;">=== </span><span style="color:#d08770;">null</span><span style="color:#c0c5ce;">) {
+</span><span style="color:#c0c5ce;">        </span><span style="color:#8fa1b3;">showError</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">There was an error authenticating you (response was null)</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#c0c5ce;">        </span><span style="color:#b48ead;">return</span><span style="color:#c0c5ce;">;
+</span><span style="color:#c0c5ce;">      }
+
+</span><span style="color:#c0c5ce;">      </span><span style="color:#8fa1b3;">showResult</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">response</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">    })
+</span><span style="color:#c0c5ce;">    .</span><span style="color:#96b5b4;">catch</span><span style="color:#c0c5ce;">((</span><span style="color:#bf616a;">error</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#c0c5ce;">{
+</span><span style="color:#c0c5ce;">      </span><span style="color:#8fa1b3;">showError</span><span style="color:#c0c5ce;">(&quot;</span><span style="color:#a3be8c;">There was an unexpected error during the login process</span><span style="color:#c0c5ce;">&quot;);
+</span><span style="color:#c0c5ce;">      </span><span style="color:#ebcb8b;">console</span><span style="color:#c0c5ce;">.</span><span style="color:#96b5b4;">error</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">error</span><span style="color:#c0c5ce;">);
+</span><span style="color:#c0c5ce;">    });
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<p>Here we chose the popup method of authentication, you can also chose redirect.</p>
+<p>The functions called <code>showError</code> and <code>showResult</code> are examples and they will likely be different in your application.</p>
+<p>The <code>response</code> object has a field called <code>accessToken</code> which you can use to query data on behalf of the user.</p>
+<h2 id="scopes">Scopes</h2>
+<p>By default you are very limited by what you can do with the access token for security reasons. If you want to be able to perform more actions you can add scopes. Here is an example from the MSAL documentation:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-js" data-lang="js"><span style="color:#b48ead;">var </span><span style="color:#bf616a;">loginRequest </span><span style="color:#c0c5ce;">= {
+    scopes: [&quot;</span><span style="color:#a3be8c;">user.read</span><span style="color:#c0c5ce;">&quot;, &quot;</span><span style="color:#a3be8c;">mail.send</span><span style="color:#c0c5ce;">&quot;]
+};
+</span></code></pre>
+<p>Now we can update the <code>loginPopup</code> parameters from earlier:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-js" data-lang="js"><span style="color:#bf616a;">msalInstance
+    </span><span style="color:#c0c5ce;">.</span><span style="color:#8fa1b3;">loginPopup</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">loginRequest</span><span style="color:#c0c5ce;">)
+    </span><span style="color:#65737e;">// ... the rest of the code
+</span></code></pre>
+<p>Now the access token will have access to those scopes.</p>
+<p>Note: you will also need to update the permissions on the app registration for all scopes <strong>except for</strong> <code>user.read</code> which is on the registration by default.</p>
+<h2 id="example-app">Example app</h2>
+<p>Attached <a href="./example_site.zip">here</a> is an example app that demonstrates using SSO login on a single page app without any frameworks (pure JavaScript).</p>
+<p>To run you need to download the source code and host it locally such as by using <code>python3 -m http.server 3000</code>. You then need to create the app registration which will give you access to a tenant id and an app id. You should then edit the <code>script.js</code> file to update the <code>clientId</code> and <code>authority</code> (see the <code>msalConfig</code> variable). You need to set the single page app redirect URL to be <code>localhost:3000</code> or your local URL.</p>
+<h2 id="useful-links">Useful links</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-overview" target="_blank">
+  https:&#x2F;&#x2F;docs.microsoft.com&#x2F;en-us&#x2F;azure&#x2F;active-directory&#x2F;develop&#x2F;v2-overview
+</li>
+</ul>
+<p></a></p>
+<ul>
+<li><a href="https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/README.md#prerequisites" target="_blank">
+  https:&#x2F;&#x2F;github.com&#x2F;AzureAD&#x2F;microsoft-authentication-library-for-js&#x2F;blob&#x2F;dev&#x2F;lib&#x2F;msal-browser&#x2F;README.md#prerequisites
+</li>
+</ul>
+<p></a></p>
+<ul>
+<li><a href="https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/initialization.md" target="_blank">
+  https:&#x2F;&#x2F;github.com&#x2F;AzureAD&#x2F;microsoft-authentication-library-for-js&#x2F;blob&#x2F;dev&#x2F;lib&#x2F;msal-browser&#x2F;docs&#x2F;initialization.md
+</li>
+</ul>
+<p></a></p>
+<ul>
+<li><a href="https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/login-user.md" target="_blank">
+  https:&#x2F;&#x2F;github.com&#x2F;AzureAD&#x2F;microsoft-authentication-library-for-js&#x2F;blob&#x2F;dev&#x2F;lib&#x2F;msal-browser&#x2F;docs&#x2F;login-user.md
+</li>
+</ul>
+<p></a></p>
+<ul>
+<li><a href="https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/acquire-token.md" target="_blank">
+  https:&#x2F;&#x2F;github.com&#x2F;AzureAD&#x2F;microsoft-authentication-library-for-js&#x2F;blob&#x2F;dev&#x2F;lib&#x2F;msal-browser&#x2F;docs&#x2F;acquire-token.md
+</li>
+</ul>
+<p></a></p>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="&#x2F;vendor&#x2F;jquery&#x2F;jquery.min.js"></script>
+    <script src="&#x2F;vendor&#x2F;bootstrap&#x2F;js&#x2F;bootstrap.bundle.min.js"></script>
+    <script src="&#x2F;scripts&#x2F;clean-blog.min.js"></script>
+  </body>
+</html>

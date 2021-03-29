@@ -1,0 +1,216 @@
+
+
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="UCL Resourcium | Testing">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Testing</title>
+    <link href="&#x2F;vendor&#x2F;fontawesome-free&#x2F;css&#x2F;all.min.css" rel="stylesheet" type="text/css">
+    <link href="&#x2F;vendor&#x2F;bootstrap&#x2F;css&#x2F;bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="&#x2F;styles&#x2F;clean-blog.min.css" rel="stylesheet">
+    <link href="&#x2F;styles&#x2F;custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="&#x2F;home&#x2F;">Project Analysis</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;home&#x2F;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;requirements&#x2F;">Requirements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;research&#x2F;">Research</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;uidesign&#x2F;">UI/UX Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;systemdesign&#x2F;">System Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;implementation&#x2F;">Implementation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;testing&#x2F;">Testing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;evaluation&#x2F;">Evaluation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;appendices&#x2F;">Appendices</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://team2971923729.wordpress.com/">Development Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead" style="background-image: url('&#x2F;images&#x2F;home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Testing</h1>
+            <span class="subheading">Team 29</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <div class="container">
+      <h2 id="testing-strategy">Testing Strategy</h2>
+<p>Our project is a mixture of tools and code. For example, we use Microsoft Flows and SharePoint which would require manual testing whereas for the codebase, which refers to the actual web application itself, it was full of automated testing.
+To simplify, we used the following test methods:</p>
+<ul>
+<li>Unit testing and Integration Testing</li>
+<li>Performance Testing</li>
+<li>Responsive Testing</li>
+<li>Compatibility Testing</li>
+<li>User Acceptance Testing</li>
+</ul>
+<p>Unit tests and integration tests have been applied where appropriate in the codebase, for example performing snapshot testing which automatically checks whether or not the page that we want is rendered correctly. Unit tests were used to test API calls to ensure that no error is produced when trying to get data from the API, since our system uses quite a few (namely Microsoft Graphs, Linkedin Learning and Microsoft Learn).</p>
+<h3 id="integration-and-unit-testing">Integration and Unit Testing</h3>
+<h4 id="integration-testing">Integration testing</h4>
+<p>We wrote integration tests and used the front-end testing tool 'Cypress' to find bugs in our application. Cypress allowed us to stimulate tests as if a user is operating on the web app with the ability to see screenshots for each step. Cypress allowed us to write a customised  'login' commands which made writing our tests easier.</p>
+<p>In total, we wrote 8 integration tests aggregating to 42 test cases, testing the individual functionality as well as the User Interface of the app as a whole. </p>
+<h5 id="integration-tests">Integration tests</h5>
+<p><img src="./integration1.png" alt="Integration" /></p>
+<h5 id="test-cases-for-each-integration-test">Test cases for each Integration test</h5>
+<p><img src="./integration2.png" alt="Integration" /></p>
+<p>The different tests helped us find bugs for e.g. the microsoft learn search bar couldn't give search results for some of the test cases and then we solved those bugs for a better user experience.</p>
+<h4 id="unit-testing">Unit Testing</h4>
+<p>Our Integration tests helped test the specific pages within our application and even though they made up the bulk of the code they were some components that we could individually test using unit tests.</p>
+<p>We used the <code>jest</code> framework to run our client side tests. This was built into <code>react</code> which made it very convenient. We focused on testing components that were separated from the actual pages (since the Cypress tests already covered those). This included the tabs and links sections but the most useful tests were our API tests.</p>
+<p>These API tests allowed us to test both our server side back end and the functions we wrote on the client side to integrate with them. In writing these tests we discovered a bug in our local functions that we promptly fixed.</p>
+<p>We used a mixture of assertions and snapshot testing. Snapshot testing is where you store a known &quot;good&quot; response from the functions and then update it manually if we update the app.</p>
+<p>Here you can see all the unit tests passing:</p>
+<p><img src="./unit_tests.png" alt="unit tests" /></p>
+<h3 id="performance-testing">Performance Testing</h3>
+<p>Using Firefox developer tools we can see the time it takes for our application to query various endpoints:</p>
+<table><thead><tr><th>Endpoint</th><th>Sample #1 (ms)</th><th>Sample #2 (ms)</th><th>Sample #3 (ms)</th><th>Average (ms)</th></tr></thead><tbody>
+<tr><td>Initial Load</td><td>62</td><td>22</td><td>21</td><td>35</td></tr>
+<tr><td>Get settings</td><td>271</td><td>181</td><td>254</td><td>235</td></tr>
+<tr><td>Update settings</td><td>203</td><td>177</td><td>196</td><td>192</td></tr>
+<tr><td>Setup 2fa</td><td>314</td><td>192</td><td>209</td><td>238</td></tr>
+<tr><td>Verify 2fa</td><td>218</td><td>246</td><td>213</td><td>226</td></tr>
+<tr><td>Register</td><td>218</td><td>175</td><td>235</td><td>209</td></tr>
+<tr><td>Microsoft learn (cached)</td><td>15</td><td>10</td><td>12</td><td>12</td></tr>
+<tr><td>Linkedin Learning</td><td>2,020</td><td>2,230</td><td>2,050</td><td>2100</td></tr>
+</tbody></table>
+<h3 id="responsive-testing">Responsive Testing</h3>
+<p>It was important to check how the user interface fits into different screen sizes like different mobiles, laptops and tablets so we did responsive testing through Google Chrome's Developer Tools.</p>
+<h4 id="phone-view">Phone view</h4>
+<p><img src="./responsive1.png" alt="Phone view" /></p>
+<h4 id="tablet-view">Tablet view</h4>
+<p><img src="./responsive2.png" alt="Tablet view" /></p>
+<h4 id="desktop-view">Desktop view</h4>
+<p><img src="./responsive3.png" alt="Desktop view" /></p>
+<p>The responsive testing helped us design the user interface which adjusts to the size of the screen making it easy to use on all devices.</p>
+<h3 id="compatibility-testing">Compatibility Testing</h3>
+<h4 id="test-with-different-browsers-and-devices-android-ios-windows">Test with different browsers and devices (android + ios + windows)</h4>
+<p>We tested the compatibility of our web app using different browsers: Safari, Chrome and BROWSER.</p>
+<h4 id="chrome">Chrome</h4>
+<p><img src="./browser1.png" alt="Chrome" /></p>
+<h4 id="safari">Safari</h4>
+<p><img src="./browser2.png" alt="Safari" />
+The user interface was very intuitive and the links were a good feature.</p>
+<p>The web app worked well with the popular browsers that we tested on and made us confident in its compatibility.</p>
+<h3 id="user-acceptance-testing">User Acceptance Testing</h3>
+<p>We wanted to check how actual users would respond to our application we shared the link where they could use the application on their own devices and handed out feedback forms to analyse their responses.</p>
+<h4 id="summary-of-the-responses">Summary of the responses</h4>
+<p><img src="./usertesting.png" alt="User Testing" /></p>
+<p>The average response from the users has been very positive, making us confident in our development. An interesting suggestion was a tutorial for the first time a user log's in to help with navigation and understanding the application but we think the user manual would suffice for that.</p>
+<h4 id="feedback-from-client">Feedback from client</h4>
+<p>We are pleased to say that our client, Dean and our project partner, Lee Stott (Microsoft) are satisfied with the application we have developed, considering its a first generational system.</p>
+<h3 id="manual-testing-for-the-sharepoint-and-microsoft-flows">Manual Testing for the SharePoint and Microsoft Flows</h3>
+<p>Since this part of the system cannot be automated for testing, we performed manual testing. This involved us putting the Flow into the testing stage and manually submitting requests to it, in order to ensure the flows run. These manual tests below are necessary to ensure that data is successfully automated from one part of the system to another. It can be seen as a manual integration test to ensure that the entire flow (which is made up of components that cannot be tested individually) runs. The test tool we used for this would be the builtin test mechanism in Microsoft Flows, we have provided screenshots of this in each of the tests we have run and how exactly we ran each of the tests.</p>
+<p>Below we have ran 5 manual tests to ensure each of the flows work:</p>
+<h4 id="test-1-test-the-flow-which-automates-data-from-the-additional-help-form-to-the-sharepoint-list">Test 1 - Test the flow which automates data from the Additional Help Form to the SharePoint List</h4>
+<p><img src="./test1.png" alt="Test 1" /></p>
+<ol>
+<li>At the beginning of testing the flow I would click on manual and then the test button. If you notice there is an automatic test option, however that would require some triggers setup that would automatically run these tests. Due to our trigger being a form being filled out, this cannot be automated since someone will have to fill out the form to actually test it.</li>
+<li>The next step is to submit a form to check whether or not the flow successfully runs.
+If the flow does run successfully then it will inform you that it has worked (emphasising the end of the test). Below is a screenshot of the test flow running correctly:
+<img src="./test1_1.png" alt="Test 1 Final" /></li>
+</ol>
+<h4 id="test-2-test-the-flow-which-automates-data-from-the-student-stress-levels-form-to-the-sharepoint-list">Test 2 - Test the flow which automates data from the Student Stress Levels form to the SharePoint List</h4>
+<p><img src="./test2.png" alt="Test 2" /></p>
+<ol>
+<li>At the beginning of testing the flow I would click on manual and then the test button. This will put the flow in a testing state.</li>
+<li>The next step is to submit the form to see whether or not the flow will run and successfully add the data to the SharePoint list.
+If the flow does run successfully, then a positive response shows as shown below:
+<img src="./test2_1.png" alt="Test 2 Final" /></li>
+</ol>
+<h4 id="test-3-test-the-flow-which-automates-data-from-stress-levels-list-to-powerbi-for-reporting">Test 3 - Test the flow which automates data from Stress Levels List to PowerBi for reporting</h4>
+<p><img src="./test3.png" alt="Test 3" /></p>
+<ol>
+<li>At the beginning of testing the flow I would click on manual and then the test button. This will put the flow in a testing state. </li>
+<li>Although the trigger for this system is values being added to a SharePoint list, it is easier to do this through filling out a form which will in-turn run this flow.
+Since the flow ran successfully, the following response is produced:
+<img src="./test3_1.png" alt="Test 3 Final" /></li>
+</ol>
+<h4 id="test-4-test-the-flow-which-updates-the-qna-bot-knowledgebase-with-new-qna-pairings-via-a-sharepoint-list">Test 4 - Test the flow which updates the QnA bot knowledgebase with new QnA pairings via a SharePoint list</h4>
+<p><img src="./test4.png" alt="Test 4" /></p>
+<ol>
+<li>At the beginning of testing the flow I would click on manual and then the test button. This will put the flow in a testing state. </li>
+<li>In this case a trigger would be adding values to the SharePoint list containing the pairings. So in this case I would add a Question and Answer pair to the list and check whether or not
+the flow runs successfully. After doing so I received the below message to confirm it works:
+<img src="./test4_1.png" alt="Test 4 Final" /></li>
+</ol>
+<h4 id="test-5-test-the-flow-which-deletes-qna-pairings-from-the-knowledgebase-using-the-sharepoint-list">Test 5 - Test the flow which deletes QnA pairings from the knowledgebase using the SharePoint list</h4>
+<p><img src="./test5.png" alt="Test 5" /></p>
+<ol>
+<li>At the beginning of testing the flow I would click on manual and then the test button. This will put the flow in a testing state.</li>
+<li>In this case, the trigger of the flow is a deletion of a QnA pairing from the SharePoint list. Below is the result of attempting to delete the QnA I added in the test earlier (Test 4):
+<img src="./test5_1.png" alt="Test 5 Final" /></li>
+</ol>
+<h4 id="conclusion-of-manual-testing-and-ms-flows">Conclusion of Manual Testing and MS Flows</h4>
+<p>To conclude with, the Flows testing has been successful as it runs well when attempting to perform the trigger actions that cause them to run. They also ran well during user acceptance testing when they filled out forms which triggers each of these flows. Below is an example screenshot of the flows running well during user acceptance testing:
+<img src="./testconc.png" alt="Test Conclusion" />
+<br />
+<br />
+As you can see, the flows run just fine and take an extremely short period of time, relating to performance testing too. This emphasises that our system is scalable as well.</p>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="&#x2F;vendor&#x2F;jquery&#x2F;jquery.min.js"></script>
+    <script src="&#x2F;vendor&#x2F;bootstrap&#x2F;js&#x2F;bootstrap.bundle.min.js"></script>
+    <script src="&#x2F;scripts&#x2F;clean-blog.min.js"></script>
+  </body>
+</html>

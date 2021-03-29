@@ -1,0 +1,135 @@
+
+
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="UCL Resourcium | Deployment Guide">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deployment Guide</title>
+    <link href="&#x2F;vendor&#x2F;fontawesome-free&#x2F;css&#x2F;all.min.css" rel="stylesheet" type="text/css">
+    <link href="&#x2F;vendor&#x2F;bootstrap&#x2F;css&#x2F;bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="&#x2F;styles&#x2F;clean-blog.min.css" rel="stylesheet">
+    <link href="&#x2F;styles&#x2F;custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="&#x2F;home&#x2F;">Project Analysis</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;home&#x2F;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;requirements&#x2F;">Requirements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;research&#x2F;">Research</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;uidesign&#x2F;">UI/UX Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;systemdesign&#x2F;">System Design</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;implementation&#x2F;">Implementation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;testing&#x2F;">Testing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;evaluation&#x2F;">Evaluation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="&#x2F;appendices&#x2F;">Appendices</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://team2971923729.wordpress.com/">Development Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead" style="background-image: url('&#x2F;images&#x2F;home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Deployment Guide</h1>
+            <span class="subheading">Team 29</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <div class="container">
+      <h2 id="introduction">Introduction</h2>
+<p>Our system is split into two distinct halves. One is the app which includes the react front-end and the Azure function back end, the deployment for which is nearly entirely automated by scripts in the <code>deploy</code> folder. The other is the Sharepoint side of our project for which automatic deployment is not possible. TODO: the &quot;Sharepoint&quot; deployment isn't just sharepoint and some of it is automated, this sentence should be fixed.</p>
+<h2 id="i-the-sharepoint-deployment">I - The Sharepoint deployment</h2>
+<p>The Sharepoint deployment must happen before the app deployment as the app depends on URLs from the Sharepoint deployment. Below is the guide for SharePoint deployment:
+<a href="https://sites.google.com/view/team29deploymentguide/home">Deployment Guide</a></p>
+<h2 id="ii-the-app-deployment">II - The app deployment</h2>
+<h3 id="dependencies">Dependencies</h3>
+<ul>
+<li>You must have a copy of the source code for our app.</li>
+<li>You must have access to a POSIX shell such as bash or zsh (this is not a requirement of the code but the specific steps and commands are different for example in Powershell, you may use other shells if you are experienced enough in them). On Linux of MacOS you can use your default shell, on Windows you should install WSL (Windows Subsystem for Linux). </li>
+<li>You must have <code>python</code> version 3 installed.</li>
+<li>Install <a href="https://virtualenv.pypa.io/en/latest/installation.html"><code>virtualenv</code></a> (You can run <code>pip install virtualenv</code>, you must ensure that this is the <code>pip</code> for python3).</li>
+<li>Install <a href="https://nodejs.org/en/download/"><code>nodejs</code></a> (which should come with <code>npm</code>) for you system. Make sure you install a recent LTS version.</li>
+<li>Install <a href="https://www.terraform.io/downloads.html"><code>terraform</code></a> (a tested version is <code>0.14</code>).</li>
+<li>Install <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI tools</a>.</li>
+<li>Install <a href="https://github.com/Azure/azure-functions-core-tools">Azure function core tools</a>, you can do this by running <code>npm i -g azure-functions-core-tools@3 --unsafe-perm true</code> (<code>npm</code> should be installed when you installed node). You must install version 3.</li>
+<li>Run <code>az login</code> then login with the account that you want to deploy with (this account will own all the resources).</li>
+<li>(Optional) if you want to choose a specific subscription to run the deployment on: <code>az account set --subscription &lt;subscription-id&gt;</code>.</li>
+</ul>
+<h3 id="app-configuration">App configuration</h3>
+<p>The deployment of the app is configured using a file called <code>app_config.yaml</code>. It is configured so that it will not be stored in the <code>git</code> history as it may contain sensitive information. An example is found at <code>app_config.yaml.example</code>. You should copy this file and rename the copy to <code>app_config.yaml</code>. It must be stored in the root of the project. The example file is self documented.</p>
+<h3 id="deploy-script">Deploy script</h3>
+<p>The next commands assume that you have a shell open in the <code>deploy</code> directory.</p>
+<p>Before you begin the deployment script you must first setup the environment by running the <code>setup_env.sh</code> script. This will install the python dependencies for the script. To run the script you can run <code>sh setup_env.sh</code> or <code>./setup_env.sh</code>. Once that's done you can enter the python virtual environment by running <code>source env/bin/activate</code> (NOTE: you can skip entering the virtualenv if <code>pyyaml</code> is installed globally, but this it not recommended).</p>
+<p>You are now ready to run <code>python deploy.py</code> (again assuming that python3 is installed as <code>python</code>).</p>
+<p>It will first check all the dependencies telling you if you need to install anything or run any commands. If everything is ready to go it will print out your deploy config and the subscription that it's going to deploy to, if it looks good you can type <code>y</code> and then hit enter.</p>
+<p>The deployment of azure resources can take a very long time (sometimes multiple hours) so you need to be patient. You may be asked for confirmation later on, usually you can just accept.</p>
+<h3 id="post-deployment">Post deployment</h3>
+<p>At the end of the deployment you are given the deployed URL of the app (future developers extending our app will allow for custom URLs to be given rather than long auto-generated ones).</p>
+<p>You should create backups of the <code>app_config.yaml</code> file in the root and the file <code>terraform.tfstate</code> in the <code>terraform</code> folder. Both these files are hidden from the git history and both contain sensitive data and they are all that is required (apart from the source code) for redeployment/upgrades. If you do not save the <code>terraform.tfstate</code> and the app is updated you will have to create a new instance of the app (it will <strong>not</strong> update the old version).</p>
+<p>At any time you are able to re-download our source code and then place <code>app_config.yaml</code> and <code>terraform.tfstate</code> in the correct locations and everything will work fine.</p>
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="&#x2F;vendor&#x2F;jquery&#x2F;jquery.min.js"></script>
+    <script src="&#x2F;vendor&#x2F;bootstrap&#x2F;js&#x2F;bootstrap.bundle.min.js"></script>
+    <script src="&#x2F;scripts&#x2F;clean-blog.min.js"></script>
+  </body>
+</html>
