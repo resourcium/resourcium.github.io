@@ -86,7 +86,7 @@ The bot was created by following the steps below:
 ![QnA Bot Setup](./qnabot.png)
 4. The token would need to be obtained from the Bot resource to connect it to the front end (the web application we made).
 
-More details of the above can be found in the deployment manual for SharePoint where a video guide is availabe on exactly how to make your own one.
+More details of the above can be found in the deployment manual for SharePoint where a video guide is available on exactly how to make your own one.
 
 ### How the flows work and were created
 To generalise the implementation of all the flows/automated system, we made use of Microsoft Flows. To find reasoning on to why we used this, please check the research section of the website.

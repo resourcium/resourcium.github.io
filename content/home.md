@@ -1,9 +1,10 @@
 +++
 title = "Home"
-# This page clearly has some work to do
 +++
 
 ### Project Abstract
+
+Project Title: UCL CS Help and Insights Project in collaboration with Microsoft
 
 Problem Statement:
 \
