@@ -74,6 +74,15 @@ The SharePoint site creation was a no-code solution. It requires you to select w
 \
 Again, the creation of the Sharepoint lists was also a no-code solution. You provide it with the columns you need and it will automatically generate these lists. Below is how the lists can be created:
 ![Sharepoint list](./sharepointlist.png)
+\
+\
+Finally, the creation of the pie charts and reporting system shown below was created through PowerBi:
+![PowerBi](./powerbi1.png)
+\
+\
+Just to show simply how we used PowerBi, here is a screenshot to show how you can select which charts to show and what data to use within those charts:
+![PowerBi](./powerbi2.png)
+To include the above view into our SharePoint site, we would very simply need the reportID of the report that we created in PowerBi and hand it over to the SharePoint site which can then display the charts/analytics.
 
 ### Creation of the QnA Bot
 
@@ -89,7 +98,7 @@ The bot was created by following the steps below:
 More details of the above can be found in the deployment manual for SharePoint where a video guide is available on exactly how to make your own one.
 
 ### How the flows work and were created
-To generalise the implementation of all the flows/automated system, we made use of Microsoft Flows. To find reasoning on to why we used this, please check the research section of the website.
+To generalise the implementation of all the data automation system, we made use of Microsoft Flows. To find reasoning on to why we used this, please check the research section of the website.
 
 #### Implementation of the flow that automates student additional help data to SharePoint lists
 ![Flow 1](./flow1.png)
@@ -139,6 +148,7 @@ In the image above, you will notice that some of these are similar to the YES br
 ![Flow 5](./flow5.png)
 \
 The above flow consists again of many parts. Just like before, the subscription key, kbID and endpoint variables are things that will need to be provided by the one deploying our system for this part to work properly. The key parts of this flow is that we first need to download the entire knowledgebase, then after we need to extract all the QnA pairs that came from our Sharepoint List. This is easy because we filter the pairs with the metadata containing "SPO". If you noticed in the API calls from the previous flow, we added a "SPO" into the metadata for the QnA pairs as well as the Sharepoint ItemID.
+\
 ![Flow 5_1](./flow5_1.png)
 \
 I have expanded the "Apply to each SPO Question" here. So once we get the data relating to just "SPO" we would loop through this and then do the following:
